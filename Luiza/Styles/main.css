@@ -1,0 +1,204 @@
+﻿#menu {
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    position: absolute;
+}
+
+a:link {
+    color: #FF6A13;
+    border-bottom: 1px dashed;
+}
+a:link:visited {
+    color: #FF6A13;
+    border-bottom: 1px dashed;
+}
+.yesBtn {
+    background-color: #0097A9;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    height: 25px;
+    width: 75px;
+    color: white;
+    border-style: none;
+    border-radius: 5px 5px 5px 5px;
+}
+
+    .yesBtn:hover {
+        background-color: green;
+        font-family: Arial,Helvetica,sans-serif;
+        font-weight: bold;
+        height: 25px;
+        width: 75px;
+        color: white;
+        border-style: none;
+        border-radius: 5px 5px 5px 5px;
+    }
+.noBtn {
+    background-color: #FF6A13;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    height: 25px;
+    width: 75px;
+    color: white;
+    border-style: none;
+    border-radius: 5px 5px 5px 5px;
+}
+
+    .noBtn:hover {
+        background-color: red;
+        font-family: Arial,Helvetica,sans-serif;
+        font-weight: bold;
+        height: 25px;
+        width: 75px;
+        color: white;
+        border-style: none;
+        border-radius: 5px 5px 5px 5px;
+    }
+
+.exitBtn {
+    background-color: #FF6A13;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    height: 100%;
+    width: auto;
+    color: white;
+    border-style: none;
+    border-radius: 5px 5px 5px 5px;
+}
+
+    .exitBtn:hover {
+        background-color: #ff0000;
+        font-family: Arial,Helvetica,sans-serif;
+        font-weight: bold;
+        height: 100%;
+        width: auto;
+        color: white;
+        border-style: none;
+        border-radius: 5px 5px 5px 5px;
+    }
+
+.Btn {
+    background-color: #0097A9;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    height: 30px;
+    width: 35%;
+    color: white;
+    border-style: none;
+    border-radius: 5px 5px 5px 5px;
+}
+
+    .Btn:hover {
+        background-color: #FF6A13;
+        font-family: Arial,Helvetica,sans-serif;
+        font-weight: bold;
+        height: 30px;
+        width: 35%;
+        color: white;
+        border-style: none;
+        border-radius: 5px 5px 5px 5px;
+    }
+
+.BtnMain {
+    background-color: #0097A9;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    height: 30px;
+    width: 35%;
+    color: white;
+    border-style: none;
+    border-radius: 5px 5px 5px 5px;
+}
+
+    .BtnMain:hover {
+        background-color: #FF6A13;
+        font-family: Arial,Helvetica,sans-serif;
+        font-weight: bold;
+        height: 30px;
+        width: 35%;
+        color: white;
+        border-style: none;
+        border-radius: 5px 5px 5px 5px;
+    }
+
+.menuBtnLeft {
+    display: inline-block;
+    background-color: #0097A9;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    height: 100%;
+    width: 17.5%;
+    float: left;
+    color: white;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid white;
+}
+
+    .menuBtnLeft:hover {
+        display: inline-block;
+        background-color: #FF6A13;
+        font-family: Arial,Helvetica,sans-serif;
+        font-weight: bold;
+        height: 100%;
+        width: 17.5%;
+        float: left;
+        color: white;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border: 1px solid white;
+    }
+
+.menuBtn {
+    background-color: #0097A9;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    height: 100%;
+    width: 16.5%;
+    float: left;
+    color: white;
+    border-style: none;
+    border: 1px solid white;
+}
+
+    .menuBtn:hover {
+        background-color: #FF6A13;
+        font-family: Arial,Helvetica,sans-serif;
+        font-weight: bold;
+        height: 100%;
+        width: 16.5%;
+        float: left;
+        color: white;
+        border-style: none;
+        border: 1px solid white;
+    }
+
+.menuBtnRight {
+    background-color: #0097A9;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    height: 100%;
+    width: 16.5%;
+    float: left;
+    color: white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-style: none;
+    border: 1px solid white;
+}
+
+    .menuBtnRight:hover {
+        background-color: #FF6A13;
+        font-family: Arial,Helvetica,sans-serif;
+        font-weight: bold;
+        height: 100%;
+        width: 16.5%;
+        float: left;
+        color: white;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-style: none;
+        border: 1px solid white;
+    }

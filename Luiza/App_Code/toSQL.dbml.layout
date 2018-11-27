@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 11.375" name="toSQL">
+  <DataContextMoniker Name="/toSQLDataContext" />
+  <nestedChildShapes>
+    <classShape Id="8862fcd7-69a5-4d9f-99d7-d7b2cd0808f8" absoluteBounds="2.625, 0.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/toSQLDataContext/Sperm_Cities" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1f464f99-36a8-48f1-ba30-b67dd68a00e0" absoluteBounds="2.6400000000000006, 0.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c212d45a-9592-4927-95e8-156eb48f2f33" absoluteBounds="2.625, 2.125, 2, 1.3862939453125">
+      <DataClassMoniker Name="/toSQLDataContext/Sperm_Dates" />
+      <nestedChildShapes>
+        <elementListCompartment Id="554c6c9c-8a2a-4aa6-b8ff-cafe8be295ee" absoluteBounds="2.6400000000000006, 2.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="653b3679-f57f-41b8-9fb3-45ac6c1992b7" absoluteBounds="2.625, 3.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/toSQLDataContext/Sperm_Doctor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6c8fa522-7c1a-42e9-bdb7-5a22164e8dc2" absoluteBounds="2.6400000000000006, 4.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9cadb1a9-1843-4dc3-9307-0e57cfe6b2d9" absoluteBounds="2.625, 5.25, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/toSQLDataContext/Sperm_Price" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d91e8452-cd00-445f-94c0-9683b19d44f9" absoluteBounds="2.6400000000000006, 5.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="34876137-41e6-4866-aca4-e768f4e66466" absoluteBounds="2.625, 6.875, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/toSQLDataContext/Sperm_Zapisi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a17005f4-8c63-47a0-b000-435cd32eedd5" absoluteBounds="2.6400000000000006, 7.3350000000000009, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="775ff1e2-486a-4cd1-8c30-6f009faf2aeb" absoluteBounds="0.5, 0.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/toSQLDataContext/Users" />
+      <nestedChildShapes>
+        <elementListCompartment Id="42da36fd-8e31-45a8-baa0-c98c9bc56645" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="66b6daf9-6630-4497-a5f1-1f51acb3fa8d" absoluteBounds="4.75, 0.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/toSQLDataContext/Uzi_Cities" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8d0125db-8728-45f9-8dc7-86a7a0404394" absoluteBounds="4.765, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="30c0f8fd-f68a-4efd-bb62-7662830ba751" absoluteBounds="4.75, 2.375, 2, 2.5401025390625">
+      <DataClassMoniker Name="/toSQLDataContext/Uzi_Doctor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0d9a7f46-a66b-496c-a5cb-4af540d2e1e4" absoluteBounds="4.765, 2.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b8f3242a-0e62-4c55-a642-dd1673dbef1b" absoluteBounds="4.75, 5, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/toSQLDataContext/Uzi_Price" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3ee8a853-33a2-43f2-849c-322ca4b8385f" absoluteBounds="4.765, 5.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3350aec8-ab0f-4b8b-84cc-c8e6fbc2b920" absoluteBounds="4.75, 7.875, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/toSQLDataContext/Uzi_Zapisi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="38079fba-a5c5-47bf-b23f-d2c7f0f1956b" absoluteBounds="4.7650000000000006, 8.335, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

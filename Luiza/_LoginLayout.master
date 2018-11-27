@@ -1,0 +1,29 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="_LoginLayout.master.cs" Inherits="_LoginLayout" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>
+        <asp:ContentPlaceHolder ID="title" runat="server"></asp:ContentPlaceHolder>
+    </title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Styles/main.css" rel="stylesheet" />
+</head>
+<body id="main" style="margin: 0px 0px 0px 0px">
+    <form id="form1" runat="server">
+        <div id="body" style="position: absolute; right: 10px; top: 10px; bottom: 10px; left: 10px; font-family: Arial, Helvetica, sans-serif; color: #0097A9; font-weight: bold; font-size: small;" class="body">
+            <div id="head" style="top: 10px; right: 10px; left: 10px; position: fixed; background-image: url('/Images/logo.png'); background-repeat: no-repeat; height: 50px;" class="head">
+            </div>
+            <div style="position: fixed; border-radius: 5px 5px 5px 5px; border: 2px solid #0097A9; top: 65px; right: 10px; left: 10px; bottom: 10px;">
+                <div id="content" class="content" style="position: absolute; top: 5px; right: 5px; bottom: 5px; left: 5px">
+                    <asp:ContentPlaceHolder ID="Content" runat="server">
+                        
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

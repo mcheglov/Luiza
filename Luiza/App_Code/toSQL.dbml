@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SUZ" Class="toSQLDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=sv-ts33\invsib;Initial Catalog=SUZ;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SUZConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Sperm_Cities" Member="Sperm_Cities">
+    <Type Name="Sperm_Cities">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="MO" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sperm_Dates" Member="Sperm_Dates">
+    <Type Name="Sperm_Dates">
+      <Column Name="date" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="city" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="mo" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sperm_Doctor" Member="Sperm_Doctor">
+    <Type Name="Sperm_Doctor">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="city" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="mo" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sperm_Price" Member="Sperm_Price">
+    <Type Name="Sperm_Price">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Test_code" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Test_city" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Test_mo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sperm_Zapisi" Member="Sperm_Zapisi">
+    <Type Name="Sperm_Zapisi">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name_1" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="name_2" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="name_3" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="date" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="time" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="doctor" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="call" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="visit" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="administrator" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="usluga" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="city" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="mo" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="Users">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Login" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Rights" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Uzi_Cities" Member="Uzi_Cities">
+    <Type Name="Uzi_Cities">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="mo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="duration" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Uzi_Doctor" Member="Uzi_Doctor">
+    <Type Name="Uzi_Doctor">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DOCTOR" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CITY" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MO" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RESTRICTION" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TEST" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TEST_OMS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DURATION" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DURATION_OMS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Uzi_Price" Member="Uzi_Price">
+    <Type Name="Uzi_Price">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="test" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="nsk_price" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="krs_price" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tomsk_price" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="omsk_price" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="irk_price" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="common_prep" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tomsk_prep" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Uzi_Zapisi" Member="Uzi_Zapisi">
+    <Type Name="Uzi_Zapisi">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="date" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="time" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="fio" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="age" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="sex" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="mo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="doctor" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="services" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="admin" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="accept" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
