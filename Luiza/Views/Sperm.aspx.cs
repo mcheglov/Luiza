@@ -65,11 +65,6 @@ public partial class Views_Sperm : System.Web.UI.Page
         gvUpdate();
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        MiddlenameTB.Text = "123123123";
-    }
-
     protected void MoDL_SelectedIndexChanged(object sender, EventArgs e)
     {
         var days = (from d in db.Sperm_Zapisi
@@ -309,22 +304,10 @@ public partial class Views_Sperm : System.Web.UI.Page
         Response.Redirect("/Views/SpermSettings.aspx");
     }
 
-    protected void ReplaceBT_Click(object sender, EventArgs e)
-    {
-
-    }
 
     protected void SpermGV_SelectedIndexChanged(object sender, EventArgs e)
     {
 
     }
 
-    protected void Button4_Click(object sender, EventArgs e)
-    {
-        string phone = PhoneTB.Text;
-        phone = phone.Remove(13, 1);
-        phone = phone.Remove(10, 1);
-        phone = phone.Remove(5, 2);
-        phone = phone.Remove(1, 1);
-    }
 }

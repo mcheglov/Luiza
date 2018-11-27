@@ -76,10 +76,6 @@
                         <asp:ControlParameter ControlID="MoDL" Name="Test_mo" PropertyName="SelectedValue" Type="String" />
                     </WhereParameters>
                 </asp:LinqDataSource>
-                <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="Button" />
-                <br />
-                <br />
-                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
             </div>
             <div>
                 <br />
