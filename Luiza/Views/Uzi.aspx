@@ -62,10 +62,13 @@
                 Пол
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:TextBox ID="SexTB" class="form-control item" runat="server" TextMode="Search" Width="100%" Font-Size="Small" Height="20px"></asp:TextBox>
-            </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 Телефон
+            </div>
+                <asp:DropDownList ID="SexDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" Height="20px">
+                    <asp:ListItem>Мужской</asp:ListItem>
+                    <asp:ListItem>Женский</asp:ListItem>
+                </asp:DropDownList>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
 
