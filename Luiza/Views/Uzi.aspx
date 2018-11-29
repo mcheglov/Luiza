@@ -49,7 +49,7 @@
                 Отчество
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:TextBox ID="MiddlenameTB" class="form-control item" runat="server" TextMode="Search" Width="100%" Font-Size="Small" Height="20px"></asp:TextBox>
+                <asp:TextBox ID="MiddlenameTB" class="form-control item" runat="server" TextMode="Search" Width="100%" Font-Size="Small" Height="20px" OnTextChanged="MiddlenameTB_TextChanged"></asp:TextBox>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 Возраст
@@ -92,30 +92,35 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel" style="color: #FF6A13;">Подготовка</h5>
+                                <asp:Label ID="currentDoctor" runat="server" Text="Выбранный доктор" Font-Size="Large" ForeColor="#FF6A13"></asp:Label>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body" style="text-align: left;">
-                                Принимать материал на сперморграмму сданную вне офиса - запрещено.
-Правила сбора б/м и подготовка:
-                                <br />
-                                Выдержать не менее 48 часового и не более 7-дневного полового воздержания.<br />
-                                В период подготовки нельзя принимать алкоголь, лекарственные препараты, посещать баню или сауну, подвергаться воздействию УВЧ.
-При повторном исследовании желательно устанавливать одинаковые периоды воздержания для снижения колебаний полученного результата
-Эякулят получают путём мастурбации.<br />
-                                Собирают в специальный контейнер, который предварительно необходимо получить в медицинском офисе.<br />
-                                Запрещено использовать презерватив для сбора спермы (вещества, используемые при производстве презервативов, могут влиять на степень подвижности сперматозоидов).
-Если мастурбация была успешной, но эякулят не получен, необходимо сразу помочиться и доставить на анализ всю полученную мочу.<br />
-                                Во время транспортировки сперму сохранять при температуре +27°С...+37°С.<br />
-                                На контейнере необходимо указать фамилию, дату и точное время получения эякулята.<br />
-                                Исследования должно начинаться не позднее 1 часа после получения биоматериала
-597 MAR-тест IgA и 598 MAR-тест, IgG могут быть выполнены на основании данных спермограммы, выполненной не более 3х месяцев назад.
-                                <br />
-                                Если концентрация сперматозоидов не менее 10 млн/мл, подвижность А+В не менее 20%.
-                                <br />
-                                Если по результатам спермограммы материал не соответствует данным условиям, пациенту Mar- тесты не делаем и возвращаем деньги.<br />
+                                <div style="height: 400px; position: inherit;">
+                                    <div style="margin: 3px; padding: 2px; border: 1px solid #FF6A13; border-radius: 5px; width: 32%; height: 100px; position: relative; float: left;">
+                                        <asp:Label ID="Label2" runat="server" Text="Ограничения" Height="20px"></asp:Label>
+                                        <br />
+                                        <asp:Label ID="restrictionLabel" runat="server" Text="Ограничения" Height="20px" ForeColor="Red"></asp:Label>
+                                    </div>
+                                    <div style="margin: 3px; padding: 2px; border: 1px solid #FF6A13; border-radius: 5px; width: 32%; height: 100px; position: relative; float: left;">
+                                        <asp:Label ID="Label3" runat="server" Text="Длительность" Height="20px"></asp:Label>
+                                        <br />
+                                        <asp:Label ID="durationLabel" runat="server" Text="Длительность" Height="20px" ForeColor="Red"></asp:Label>
+                                    </div>
+                                    <div style="margin: 3px; padding: 2px; border: 1px solid #FF6A13; border-radius: 5px; width: 32%; height: 100px; position: relative; float: left;">
+                                        <asp:Label ID="Label4" runat="server" Text="Цена" Height="20px"></asp:Label>
+                                        <br />
+                                        <asp:Label ID="priceLabel" runat="server" Text="Цена" Height="20px" ForeColor="Red"></asp:Label>
+
+                                    </div>
+                                    <div style="margin: 3px; padding: 2px; border: 1px solid #0097A9; border-radius: 5px; bottom: 0px; right: 0px; left: 0px; top: 106px; position:absolute; height: 300px;">
+                                        <asp:Label ID="Label5" runat="server" Text="Подготовка" Height="20px"></asp:Label>
+                                        <br />
+                                        <asp:TextBox ID="PrepTB" сlass="form-control item" runat="server" Width="100%" Height="274px" TextMode="MultiLine" Font-Size="Small"></asp:TextBox>
+                                    </div>
+                                </div>
                             </div>
                             <div class="modal-footer" style="text-align: center;">
                                 <button type="button" class="exitBtn" data-dismiss="modal">Закрыть</button>
@@ -142,16 +147,14 @@
             <div style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; padding: 4px 4px 4px 4px;">
 
                 <!--НАЧАЛО БЛОКА-->
-                <div style="text-align: left; top: 0px; bottom: 0px; width: 20%; height: 100%; position: relative; float: left">
+                <div  id="block1" runat="server" style="text-align: left; top: 0px; bottom: 0px; width: 20%; height: 100%; position: relative; float: left">
                     <div style="border: 1px solid #FF6A13; margin: 2px 4px 2px 4px; padding: 4px; top: 0px; right: 0px; bottom: 0px; left: 0px; position: absolute; text-align: left; border-radius: 5px 5px 5px 5px;">
-                        <div id="block1" runat="server" style="top: 0px; right: 0px; bottom: 0px; left: 0px;">
+                        <div style="top: 0px; right: 0px; bottom: 0px; left: 0px;">
                             <div style="position: absolute; top: 0px; right: 0px; left: 0px; height: 70px; padding: 6px; text-align: center;">
-                                <asp:RadioButton ID="DoctorRB1" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" />
+                                <asp:RadioButton ID="DoctorRB1" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" AutoPostBack="True" OnCheckedChanged="DoctorRB1_CheckedChanged" />
                             </div>
                             <div style="position: absolute; top: 70px; right: 0px; left: 0px; bottom: 270px; padding: 4px; text-align: center;">
-                                <asp:ListBox ID="DoctorTimeLB1" runat="server" Height="100%" Width="100%" class="form-control item" Font-Size="Small">
-                                    
-                                </asp:ListBox>
+                                <asp:ListBox ID="DoctorTimeLB1" runat="server" Height="100%" Width="100%" class="form-control item" Font-Size="Small"></asp:ListBox>
                             </div>
                             <div style="position: absolute; bottom: 240px; right: 0px; left: 0px; height: 30px; padding: 2px; text-align: center;">
                                 <div style="top: 0px; right: 0px; bottom: 0px; left: 0px">
@@ -183,17 +186,15 @@
                     </div>
                 </div>
                 <!--КОНЕЦ БЛОКА-->
-				<!--НАЧАЛО БЛОКА-->
-                <div style="text-align: left; top: 0px; bottom: 0px; width: 20%; height: 100%; position: relative; float: left">
+                <!--НАЧАЛО БЛОКА-->
+                <div id="block2" runat="server" style="text-align: left; top: 0px; bottom: 0px; width: 20%; height: 100%; position: relative; float: left">
                     <div style="border: 1px solid #FF6A13; margin: 2px 4px 2px 4px; padding: 4px; top: 0px; right: 0px; bottom: 0px; left: 0px; position: absolute; text-align: left; border-radius: 5px 5px 5px 5px;">
-                        <div id="block2" runat="server" style="top: 0px; right: 0px; bottom: 0px; left: 0px;">
+                        <div style="top: 0px; right: 0px; bottom: 0px; left: 0px;">
                             <div style="position: absolute; top: 0px; right: 0px; left: 0px; height: 70px; padding: 6px; text-align: center;">
-                                <asp:RadioButton ID="DoctorRB2" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" />
+                                <asp:RadioButton ID="DoctorRB2" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" AutoPostBack="True" OnCheckedChanged="DoctorRB2_CheckedChanged" />
                             </div>
                             <div style="position: absolute; top: 70px; right: 0px; left: 0px; bottom: 270px; padding: 4px; text-align: center;">
-                                <asp:ListBox ID="DoctorTimeLB2" runat="server" Height="100%" Width="100%" class="form-control item" Font-Size="Small">
-                                    
-                                </asp:ListBox>
+                                <asp:ListBox ID="DoctorTimeLB2" runat="server" Height="100%" Width="100%" class="form-control item" Font-Size="Small"></asp:ListBox>
                             </div>
                             <div style="position: absolute; bottom: 240px; right: 0px; left: 0px; height: 30px; padding: 2px; text-align: center;">
                                 <div style="top: 0px; right: 0px; bottom: 0px; left: 0px">
@@ -225,17 +226,15 @@
                     </div>
                 </div>
                 <!--КОНЕЦ БЛОКА-->
-				<!--НАЧАЛО БЛОКА-->
-                <div style="text-align: left; top: 0px; bottom: 0px; width: 20%; height: 100%; position: relative; float: left">
+                <!--НАЧАЛО БЛОКА-->
+                <div id="block3" runat="server" style="text-align: left; top: 0px; bottom: 0px; width: 20%; height: 100%; position: relative; float: left">
                     <div style="border: 1px solid #FF6A13; margin: 2px 4px 2px 4px; padding: 4px; top: 0px; right: 0px; bottom: 0px; left: 0px; position: absolute; text-align: left; border-radius: 5px 5px 5px 5px;">
-                        <div id="block3" runat="server" style="top: 0px; right: 0px; bottom: 0px; left: 0px;">
+                        <div style="top: 0px; right: 0px; bottom: 0px; left: 0px;">
                             <div style="position: absolute; top: 0px; right: 0px; left: 0px; height: 70px; padding: 6px; text-align: center;">
-                                <asp:RadioButton ID="DoctorRB3" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" />
+                                <asp:RadioButton ID="DoctorRB3" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" AutoPostBack="True" OnCheckedChanged="DoctorRB3_CheckedChanged" />
                             </div>
                             <div style="position: absolute; top: 70px; right: 0px; left: 0px; bottom: 270px; padding: 4px; text-align: center;">
-                                <asp:ListBox ID="DoctorTimeLB3" runat="server" Height="100%" Width="100%" class="form-control item" Font-Size="Small">
-                                    
-                                </asp:ListBox>
+                                <asp:ListBox ID="DoctorTimeLB3" runat="server" Height="100%" Width="100%" class="form-control item" Font-Size="Small"></asp:ListBox>
                             </div>
                             <div style="position: absolute; bottom: 240px; right: 0px; left: 0px; height: 30px; padding: 2px; text-align: center;">
                                 <div style="top: 0px; right: 0px; bottom: 0px; left: 0px">
@@ -267,17 +266,15 @@
                     </div>
                 </div>
                 <!--КОНЕЦ БЛОКА-->
-				<!--НАЧАЛО БЛОКА-->
-                <div style="text-align: left; top: 0px; bottom: 0px; width: 20%; height: 100%; position: relative; float: left">
+                <!--НАЧАЛО БЛОКА-->
+                <div id="block4" runat="server" style="text-align: left; top: 0px; bottom: 0px; width: 20%; height: 100%; position: relative; float: left">
                     <div style="border: 1px solid #FF6A13; margin: 2px 4px 2px 4px; padding: 4px; top: 0px; right: 0px; bottom: 0px; left: 0px; position: absolute; text-align: left; border-radius: 5px 5px 5px 5px;">
-                        <div id="block4" runat="server" style="top: 0px; right: 0px; bottom: 0px; left: 0px;">
+                        <div style="top: 0px; right: 0px; bottom: 0px; left: 0px;">
                             <div style="position: absolute; top: 0px; right: 0px; left: 0px; height: 70px; padding: 6px; text-align: center;">
-                                <asp:RadioButton ID="DoctorRB4" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" />
+                                <asp:RadioButton ID="DoctorRB4" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" AutoPostBack="True" OnCheckedChanged="DoctorRB4_CheckedChanged" />
                             </div>
                             <div style="position: absolute; top: 70px; right: 0px; left: 0px; bottom: 270px; padding: 4px; text-align: center;">
-                                <asp:ListBox ID="DoctorTimeLB4" runat="server" Height="100%" Width="100%" class="form-control item" Font-Size="Small">
-                                    
-                                </asp:ListBox>
+                                <asp:ListBox ID="DoctorTimeLB4" runat="server" Height="100%" Width="100%" class="form-control item" Font-Size="Small"></asp:ListBox>
                             </div>
                             <div style="position: absolute; bottom: 240px; right: 0px; left: 0px; height: 30px; padding: 2px; text-align: center;">
                                 <div style="top: 0px; right: 0px; bottom: 0px; left: 0px">
@@ -309,17 +306,15 @@
                     </div>
                 </div>
                 <!--КОНЕЦ БЛОКА-->
-				<!--НАЧАЛО БЛОКА-->
-                <div style="text-align: left; top: 0px; bottom: 0px; width: 20%; height: 100%; position: relative; float: left">
+                <!--НАЧАЛО БЛОКА-->
+                <div id="block5" runat="server" style="text-align: left; top: 0px; bottom: 0px; width: 20%; height: 100%; position: relative; float: left;">
                     <div style="border: 1px solid #FF6A13; margin: 2px 4px 2px 4px; padding: 4px; top: 0px; right: 0px; bottom: 0px; left: 0px; position: absolute; text-align: left; border-radius: 5px 5px 5px 5px;">
-                        <div id="block5" runat="server" style="top: 0px; right: 0px; bottom: 0px; left: 0px;">
+                        <div style="top: 0px; right: 0px; bottom: 0px; left: 0px;">
                             <div style="position: absolute; top: 0px; right: 0px; left: 0px; height: 70px; padding: 6px; text-align: center;">
-                                <asp:RadioButton ID="DoctorRB5" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" />
+                                <asp:RadioButton ID="DoctorRB5" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" AutoPostBack="True" OnCheckedChanged="DoctorRB5_CheckedChanged" />
                             </div>
                             <div style="position: absolute; top: 70px; right: 0px; left: 0px; bottom: 270px; padding: 4px; text-align: center;">
-                                <asp:ListBox ID="DoctorTimeLB5" runat="server" Height="100%" Width="100%" class="form-control item" Font-Size="Small">
-                                    
-                                </asp:ListBox>
+                                <asp:ListBox ID="DoctorTimeLB5" runat="server" Height="100%" Width="100%" class="form-control item" Font-Size="Small"></asp:ListBox>
                             </div>
                             <div style="position: absolute; bottom: 240px; right: 0px; left: 0px; height: 30px; padding: 2px; text-align: center;">
                                 <div style="top: 0px; right: 0px; bottom: 0px; left: 0px">
