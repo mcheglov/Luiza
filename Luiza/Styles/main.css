@@ -10,10 +10,12 @@ a:link {
     color: #FF6A13;
     border-bottom: 1px dashed;
 }
-a:link:visited {
-    color: #FF6A13;
-    border-bottom: 1px dashed;
-}
+
+    a:link:visited {
+        color: #FF6A13;
+        border-bottom: 1px dashed;
+    }
+
 .yesBtn {
     background-color: #0097A9;
     font-family: Arial,Helvetica,sans-serif;
@@ -35,6 +37,7 @@ a:link:visited {
         border-style: none;
         border-radius: 5px 5px 5px 5px;
     }
+
 .noBtn {
     background-color: #FF6A13;
     font-family: Arial,Helvetica,sans-serif;
