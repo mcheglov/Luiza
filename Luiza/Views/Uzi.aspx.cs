@@ -116,7 +116,7 @@ public partial class Views_Uzi : System.Web.UI.Page
             DoctorRB2.Checked = false;
             DoctorRB3.Checked = false;
             DoctorRB4.Checked = false;
-            DoctorRB5.Checked = false;
+            DoctorRB5.Checked = true;
         }
     }
 }
