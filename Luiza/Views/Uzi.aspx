@@ -16,21 +16,21 @@
                 Город
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:DropDownList ID="CityDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" Height="20px">
+                <asp:DropDownList ID="CityDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" Height="30px" OnSelectedIndexChanged="CityDL_SelectedIndexChanged">
                 </asp:DropDownList>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 МО
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:DropDownList ID="MoDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" Height="20px">
+                <asp:DropDownList ID="MoDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" Height="30px" OnSelectedIndexChanged="MoDL_SelectedIndexChanged">
                 </asp:DropDownList>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 Дата
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:DropDownList ID="DateDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" Height="20px">
+                <asp:DropDownList ID="DateDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" Height="30px" OnSelectedIndexChanged="DateDL_SelectedIndexChanged">
                 </asp:DropDownList>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
@@ -55,23 +55,22 @@
                 Возраст
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:DropDownList ID="AgeDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" Height="20px">
+                <asp:DropDownList ID="AgeDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" Height="30px">
                 </asp:DropDownList>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 Пол
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-            <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                Телефон
-            </div>
-                <asp:DropDownList ID="SexDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" Height="20px">
+                <asp:DropDownList ID="SexDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" Height="30px">
                     <asp:ListItem>Мужской</asp:ListItem>
                     <asp:ListItem>Женский</asp:ListItem>
                 </asp:DropDownList>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-
+                Телефон
+            </div>
+            <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 <script>
                     jQuery(function ($) {
                         $(".masked").mask("8(999) 999 99-99"); // use the class!

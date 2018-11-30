@@ -22,8 +22,123 @@ public partial class Views_Uzi : System.Web.UI.Page
         ChangeBT.Visible = false;
         ConfirmBT.Visible = false;
         SubmitBT.Text = "ЗАПИСАТЬ";
-        DoctorTimeLB1.Items[0].Attributes.Add("style", "background-color: Lime; color: Red");
-        DoctorTimeLB1.Items[1].Attributes.Add("style", "background-color: Yellow; color: Red");
+        //DoctorTimeLB1.Items[0].Attributes.Add("style", "background-color: Lime; color: Red");
+        //DoctorTimeLB1.Items[1].Attributes.Add("style", "background-color: Yellow; color: Red");
+        if (CityDL.Items.Count == 0)
+        {
+            var cities = (from o in db.Uzi_Cities
+                          select new { o.city }).Distinct();
+            CityDL.Items.Clear();
+            for (int i = 0; i < cities.Count(); i++)
+            {
+                CityDL.Items.Add(cities.ToList().ElementAt(i).city.ToString());
+            }
+            var mos = from o in db.Uzi_Cities
+                      where o.city == CityDL.SelectedValue.ToString()
+                      select o;
+            MoDL.Items.Clear();
+            for (int i = 0; i < mos.Count(); i++)
+            {
+                MoDL.Items.Add(mos.ToList().ElementAt(i).mo.ToString());
+            }
+        }
+        if (DateDL.Items.Count == 0)
+        {
+            DateTime dt1 = DateTime.Now;
+            var days = (from d in db.Uzi_Zapisi
+                        where d.city == CityDL.SelectedValue.ToString()
+                        where d.mo == MoDL.SelectedValue.ToString()
+                        where d.date.Contains(dt1.ToShortDateString().Remove(0, 6))
+                        select d.date).Distinct();
+            DateDL.Items.Clear();
+            DateTime[] dates = new DateTime[days.Count()];
+            for (int i = 0; i < days.Count(); i++)
+            {
+                dates[i] = DateTime.ParseExact(days.ToList().ElementAt(i).ToString(), "dd.M.yyyy", null);
+            }
+            dates = dates.OrderByDescending(d => d).ToArray();
+            for (int i = 0; i < days.Count(); i++)
+            {
+                DateDL.Items.Add(dates[i].ToShortDateString());
+            }
+        }
+        if (DoctorRB1.Text == "" && DoctorRB2.Text == "" && DoctorRB3.Text == "" && DoctorRB4.Text == "" && DoctorRB5.Text == "")
+        {
+            var docs = (from d in db.Uzi_Zapisi
+                        where d.city == CityDL.SelectedValue.ToString()
+                        where d.mo == MoDL.SelectedValue.ToString()
+                        where d.date == DateDL.SelectedValue
+                        select d.doctor).Distinct();
+            DoctorRB1.Text = "";
+            DoctorRB2.Text = "";
+            DoctorRB3.Text = "";
+            DoctorRB4.Text = "";
+            DoctorRB5.Text = "";
+            if (docs.Count() == 0)
+            {
+                block1.Visible = false;
+                block2.Visible = false;
+                block3.Visible = false;
+                block4.Visible = false;
+                block5.Visible = false;
+            }
+            else if(docs.Count() == 1)
+            {
+                DoctorRB1.Text =  docs.ToList().ElementAt(0).ToString();
+                block1.Visible = true;
+                block2.Visible = false;
+                block3.Visible = false;
+                block4.Visible = false;
+                block5.Visible = false;
+            }
+            else if (docs.Count() == 2)
+            {
+                DoctorRB1.Text = docs.ToList().ElementAt(0).ToString();
+                DoctorRB2.Text = docs.ToList().ElementAt(1).ToString();
+                block1.Visible = true;
+                block2.Visible = true;
+                block3.Visible = false;
+                block4.Visible = false;
+                block5.Visible = false;
+
+            }
+            else if (docs.Count() == 3)
+            {
+                DoctorRB1.Text = docs.ToList().ElementAt(0).ToString();
+                DoctorRB2.Text = docs.ToList().ElementAt(1).ToString();
+                DoctorRB3.Text = docs.ToList().ElementAt(2).ToString();
+                block1.Visible = true;
+                block2.Visible = true;
+                block3.Visible = true;
+                block4.Visible = false;
+                block5.Visible = false;
+            }
+            else if (docs.Count() == 4)
+            {
+                DoctorRB1.Text = docs.ToList().ElementAt(0).ToString();
+                DoctorRB2.Text = docs.ToList().ElementAt(1).ToString();
+                DoctorRB3.Text = docs.ToList().ElementAt(2).ToString();
+                DoctorRB4.Text = docs.ToList().ElementAt(3).ToString();
+                block1.Visible = true;
+                block2.Visible = true;
+                block3.Visible = true;
+                block4.Visible = true;
+                block5.Visible = false;
+            }
+            else if (docs.Count() == 5)
+            {
+                DoctorRB1.Text = docs.ToList().ElementAt(0).ToString();
+                DoctorRB2.Text = docs.ToList().ElementAt(1).ToString();
+                DoctorRB3.Text = docs.ToList().ElementAt(2).ToString();
+                DoctorRB4.Text = docs.ToList().ElementAt(3).ToString();
+                DoctorRB5.Text = docs.ToList().ElementAt(4).ToString();
+                block1.Visible = true;
+                block2.Visible = true;
+                block3.Visible = true;
+                block4.Visible = true;
+                block5.Visible = true;
+            }
+        }
     }
 
     protected void SettingsBT_Click(object sender, EventArgs e)
@@ -228,5 +343,60 @@ public partial class Views_Uzi : System.Web.UI.Page
                 ConfirmBT.Visible = false;
             }
         }
+    }
+
+    protected void CityDL_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        var mos = from o in db.Uzi_Cities
+                  where o.city == CityDL.SelectedValue.ToString()
+                  select o;
+        MoDL.Items.Clear();
+        for (int i = 0; i < mos.Count(); i++)
+        {
+            MoDL.Items.Add(mos.ToList().ElementAt(i).mo.ToString());
+        }
+        DateTime dt1 = DateTime.Now;
+        var days = (from d in db.Uzi_Zapisi
+                    where d.city == CityDL.SelectedValue.ToString()
+                    where d.mo == MoDL.SelectedValue.ToString()
+                    where d.date.Contains(dt1.ToShortDateString().Remove(0, 6))
+                    select d.date).Distinct();
+        DateDL.Items.Clear();
+        DateTime[] dates = new DateTime[days.Count()];
+        for (int i = 0; i < days.Count(); i++)
+        {
+            dates[i] = DateTime.ParseExact(days.ToList().ElementAt(i).ToString(), "dd.M.yyyy", null);
+        }
+        dates = dates.OrderByDescending(d => d).ToArray();
+        for (int i = 0; i < days.Count(); i++)
+        {
+            DateDL.Items.Add(dates[i].ToShortDateString());
+        }
+    }
+
+    protected void MoDL_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        DateTime dt1 = DateTime.Now;
+        var days = (from d in db.Uzi_Zapisi
+                    where d.city == CityDL.SelectedValue.ToString()
+                    where d.mo == MoDL.SelectedValue.ToString()
+                    where d.date.Contains(dt1.ToShortDateString().Remove(0, 6))
+                    select d.date).Distinct();
+        DateDL.Items.Clear();
+        DateTime[] dates = new DateTime[days.Count()];
+        for (int i = 0; i < days.Count(); i++)
+        {
+            dates[i] = DateTime.ParseExact(days.ToList().ElementAt(i).ToString(), "dd.M.yyyy", null);
+        }
+        dates = dates.OrderByDescending(d => d).ToArray();
+        for (int i = 0; i < days.Count(); i++)
+        {
+            DateDL.Items.Add(dates[i].ToShortDateString());
+        }
+    }
+
+    protected void DateDL_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
     }
 }
