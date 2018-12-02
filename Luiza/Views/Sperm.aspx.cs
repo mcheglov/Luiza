@@ -86,6 +86,7 @@ public partial class Views_Sperm : System.Web.UI.Page
         }
         gvUpdate();
     }
+
     public void gvUpdate()
     {
 

@@ -105,7 +105,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <asp:Label ID="currentDoctor" runat="server" Text="Выбранный доктор" Font-Size="Large" ForeColor="#FF6A13"></asp:Label>
+                                <asp:Label ID="currentTest" runat="server" Text="Выбранный Тест" Font-Size="Large" ForeColor="#FF6A13"></asp:Label>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -216,18 +216,19 @@
                                     <asp:ListBox ID="TestLB1" runat="server" Height="100%" Width="100%" CssClass="form-control" Font-Size="Small" AutoPostBack="True" OnSelectedIndexChanged="TestLB1_SelectedIndexChanged"></asp:ListBox>
                                 </div>
                                 <div style="position: absolute; bottom: 90px; right: 0px; left: 0px; height: 30px; padding: 2px 4px 2px 4px; text-align: center;">
-                                    <asp:Button ID="AddBT1" runat="server" class="yesBtn" Text="Выбрать тест" Width="100%" Height="100%" OnClick="AddBT1_Click" />
-                                </div>
-                                <div style="position: absolute; bottom: 60px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
-                                    Выбранный тест:
-                                </div>
-                                <div style="position: absolute; bottom: 30px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
-                                    <asp:Label ID="TestLabel1" runat="server" ForeColor="#FF6A13"></asp:Label>
-                                </div>
-                                <div style="position: absolute; bottom: 0px; right: 0px; left: 0px; height: 30px; padding: 2px 4px 2px 4px; text-align: center;">
                                     <button type="button" class="BtnMain" data-toggle="modal" data-target="#exampleModal" data-backdrop="false" style="width: 100%; background-color: #FF6A13; height: 100%;">
                                         Информация</button>
                                 </div>
+                                <div style="position: absolute; bottom: 60px; right: 0px; left: 0px; height: 30px; padding: 2px 4px 2px 4px; text-align: center;">
+                                    <asp:Button ID="AddBT1" runat="server" class="yesBtn" Text="Выбрать тест" Width="100%" Height="100%" OnClick="AddBT1_Click" />
+                                </div>
+                                <div style="position: absolute; bottom: 30px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
+                                    Выбранный тест:
+                                </div>
+                                <div style="position: absolute; bottom: 0px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
+                                    <asp:Label ID="TestLabel1" runat="server" ForeColor="#FF6A13"></asp:Label>
+                                </div>
+
                             </div>
                         </div>
                     </asp:Panel>
@@ -246,7 +247,7 @@
                                     <asp:RadioButton ID="DoctorRB2" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" AutoPostBack="True" OnCheckedChanged="DoctorRB2_CheckedChanged" GroupName="doctorGP" />
                                 </div>
                                 <div style="position: absolute; top: 70px; right: 0px; left: 0px; bottom: 270px; padding: 4px; text-align: center;">
-                                    <asp:ListBox ID="DoctorTimeLB2" runat="server" Height="100%" Width="100%" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9"></asp:ListBox>
+                                    <asp:ListBox ID="DoctorTimeLB2" runat="server" Height="100%" Width="100%" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9" OnSelectedIndexChanged="DoctorTimeLB2_SelectedIndexChanged"></asp:ListBox>
                                 </div>
                                 <div style="position: absolute; bottom: 240px; right: 0px; left: 0px; height: 30px; padding: 2px; text-align: center;">
                                     <div style="top: 0px; right: 0px; bottom: 0px; left: 0px">
@@ -262,18 +263,19 @@
                                     <asp:ListBox ID="TestLB2" runat="server" Height="100%" Width="100%" CssClass="form-control" Font-Size="Small" OnSelectedIndexChanged="TestLB2_SelectedIndexChanged"></asp:ListBox>
                                 </div>
                                 <div style="position: absolute; bottom: 90px; right: 0px; left: 0px; height: 30px; padding: 2px 4px 2px 4px; text-align: center;">
-                                    <asp:Button ID="AddBT2" runat="server" class="yesBtn" Text="Выбрать тест" Width="100%" Height="100%" OnClick="AddBT2_Click" />
-                                </div>
-                                <div style="position: absolute; bottom: 60px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
-                                    Выбранный тест:
-                                </div>
-                                <div style="position: absolute; bottom: 30px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
-                                    <asp:Label ID="TestLabel2" runat="server" ForeColor="#FF6A13"></asp:Label>
-                                </div>
-                                <div style="position: absolute; bottom: 0px; right: 0px; left: 0px; height: 30px; padding: 2px 4px 2px 4px; text-align: center;">
                                     <button type="button" class="BtnMain" data-toggle="modal" data-target="#exampleModal" data-backdrop="false" style="width: 100%; background-color: #FF6A13; height: 100%;">
                                         Информация</button>
                                 </div>
+                                <div style="position: absolute; bottom: 60px; right: 0px; left: 0px; height: 30px; padding: 2px 4px 2px 4px; text-align: center;">
+                                    <asp:Button ID="AddBT2" runat="server" class="yesBtn" Text="Выбрать тест" Width="100%" Height="100%" OnClick="AddBT2_Click" />
+                                </div>
+                                <div style="position: absolute; bottom: 30px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
+                                    Выбранный тест:
+                                </div>
+                                <div style="position: absolute; bottom: 0px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
+                                    <asp:Label ID="TestLabel2" runat="server" ForeColor="#FF6A13"></asp:Label>
+                                </div>
+
                             </div>
                         </div>
                     </asp:Panel>
@@ -292,7 +294,7 @@
                                     <asp:RadioButton ID="DoctorRB3" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" AutoPostBack="True" OnCheckedChanged="DoctorRB3_CheckedChanged" GroupName="doctorGP" />
                                 </div>
                                 <div style="position: absolute; top: 70px; right: 0px; left: 0px; bottom: 270px; padding: 4px; text-align: center;">
-                                    <asp:ListBox ID="DoctorTimeLB3" runat="server" Height="100%" Width="100%" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9"></asp:ListBox>
+                                    <asp:ListBox ID="DoctorTimeLB3" runat="server" Height="100%" Width="100%" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9" OnSelectedIndexChanged="DoctorTimeLB3_SelectedIndexChanged"></asp:ListBox>
                                 </div>
                                 <div style="position: absolute; bottom: 240px; right: 0px; left: 0px; height: 30px; padding: 2px; text-align: center;">
                                     <div style="top: 0px; right: 0px; bottom: 0px; left: 0px">
@@ -306,20 +308,21 @@
                                 </div>
                                 <div style="position: absolute; bottom: 120px; right: 0px; left: 0px; height: 120px; padding: 4px; text-align: center;">
                                     <asp:ListBox ID="TestLB3" runat="server" Height="100%" Width="100%" CssClass="form-control" Font-Size="Small" AutoPostBack="True" OnSelectedIndexChanged="TestLB3_SelectedIndexChanged"></asp:ListBox>
-                                </div>
+                                </div>                                
                                 <div style="position: absolute; bottom: 90px; right: 0px; left: 0px; height: 30px; padding: 2px 4px 2px 4px; text-align: center;">
-                                    <asp:Button ID="AddBT3" runat="server" class="yesBtn" Text="Выбрать тест" Width="100%" Height="100%" OnClick="AddBT3_Click" />
-                                </div>
-                                <div style="position: absolute; bottom: 60px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
-                                    Выбранный тест:
-                                </div>
-                                <div style="position: absolute; bottom: 30px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
-                                    <asp:Label ID="TestLabel3" runat="server" ForeColor="#FF6A13"></asp:Label>
-                                </div>
-                                <div style="position: absolute; bottom: 0px; right: 0px; left: 0px; height: 30px; padding: 2px 4px 2px 4px; text-align: center;">
                                     <button type="button" class="BtnMain" data-toggle="modal" data-target="#exampleModal" data-backdrop="false" style="width: 100%; background-color: #FF6A13; height: 100%;">
                                         Информация</button>
                                 </div>
+                                <div style="position: absolute; bottom: 60px; right: 0px; left: 0px; height: 30px; padding: 2px 4px 2px 4px; text-align: center;">
+                                    <asp:Button ID="AddBT3" runat="server" class="yesBtn" Text="Выбрать тест" Width="100%" Height="100%" OnClick="AddBT3_Click" />
+                                </div>
+                                <div style="position: absolute; bottom: 30px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
+                                    Выбранный тест:
+                                </div>
+                                <div style="position: absolute; bottom: 0px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
+                                    <asp:Label ID="TestLabel3" runat="server" ForeColor="#FF6A13"></asp:Label>
+                                </div>
+
                             </div>
                         </div>
                     </asp:Panel>
@@ -337,7 +340,7 @@
                                     <asp:RadioButton ID="DoctorRB4" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" AutoPostBack="True" OnCheckedChanged="DoctorRB4_CheckedChanged" GroupName="doctorGP" />
                                 </div>
                                 <div style="position: absolute; top: 70px; right: 0px; left: 0px; bottom: 270px; padding: 4px; text-align: center;">
-                                    <asp:ListBox ID="DoctorTimeLB4" runat="server" Height="100%" Width="100%" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9"></asp:ListBox>
+                                    <asp:ListBox ID="DoctorTimeLB4" runat="server" Height="100%" Width="100%" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9" OnSelectedIndexChanged="DoctorTimeLB4_SelectedIndexChanged"></asp:ListBox>
                                 </div>
                                 <div style="position: absolute; bottom: 240px; right: 0px; left: 0px; height: 30px; padding: 2px; text-align: center;">
                                     <div style="top: 0px; right: 0px; bottom: 0px; left: 0px">
@@ -351,20 +354,21 @@
                                 </div>
                                 <div style="position: absolute; bottom: 120px; right: 0px; left: 0px; height: 120px; padding: 4px; text-align: center;">
                                     <asp:ListBox ID="TestLB4" runat="server" Height="100%" Width="100%" CssClass="form-control" Font-Size="Small" AutoPostBack="True" OnSelectedIndexChanged="TestLB4_SelectedIndexChanged"></asp:ListBox>
-                                </div>
+                                </div>                                
                                 <div style="position: absolute; bottom: 90px; right: 0px; left: 0px; height: 30px; padding: 2px 4px 2px 4px; text-align: center;">
-                                    <asp:Button ID="AddBT4" runat="server" class="yesBtn" Text="Выбрать тест" Width="100%" Height="100%" OnClick="AddBT4_Click" />
-                                </div>
-                                <div style="position: absolute; bottom: 60px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
-                                    Выбранный тест:
-                                </div>
-                                <div style="position: absolute; bottom: 30px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
-                                    <asp:Label ID="TestLabel4" runat="server" ForeColor="#FF6A13"></asp:Label>
-                                </div>
-                                <div style="position: absolute; bottom: 0px; right: 0px; left: 0px; height: 30px; padding: 2px 4px 2px 4px; text-align: center;">
                                     <button type="button" class="BtnMain" data-toggle="modal" data-target="#exampleModal" data-backdrop="false" style="width: 100%; background-color: #FF6A13; height: 100%;">
                                         Информация</button>
                                 </div>
+                                <div style="position: absolute; bottom: 60px; right: 0px; left: 0px; height: 30px; padding: 2px 4px 2px 4px; text-align: center;">
+                                    <asp:Button ID="AddBT4" runat="server" class="yesBtn" Text="Выбрать тест" Width="100%" Height="100%" OnClick="AddBT4_Click" />
+                                </div>
+                                <div style="position: absolute; bottom: 30px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
+                                    Выбранный тест:
+                                </div>
+                                <div style="position: absolute; bottom: 0px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
+                                    <asp:Label ID="TestLabel4" runat="server" ForeColor="#FF6A13"></asp:Label>
+                                </div>
+
                             </div>
                         </div>
                     </asp:Panel>
@@ -382,7 +386,7 @@
                                     <asp:RadioButton ID="DoctorRB5" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" AutoPostBack="True" OnCheckedChanged="DoctorRB5_CheckedChanged" GroupName="doctorGP" />
                                 </div>
                                 <div style="position: absolute; top: 70px; right: 0px; left: 0px; bottom: 270px; padding: 4px; text-align: center;">
-                                    <asp:ListBox ID="DoctorTimeLB5" runat="server" Height="100%" Width="100%" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9"></asp:ListBox>
+                                    <asp:ListBox ID="DoctorTimeLB5" runat="server" Height="100%" Width="100%" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9" OnSelectedIndexChanged="DoctorTimeLB5_SelectedIndexChanged"></asp:ListBox>
                                 </div>
                                 <div style="position: absolute; bottom: 240px; right: 0px; left: 0px; height: 30px; padding: 2px; text-align: center;">
                                     <div style="top: 0px; right: 0px; bottom: 0px; left: 0px">
@@ -396,20 +400,21 @@
                                 </div>
                                 <div style="position: absolute; bottom: 120px; right: 0px; left: 0px; height: 120px; padding: 4px; text-align: center;">
                                     <asp:ListBox ID="TestLB5" runat="server" Height="100%" Width="100%" CssClass="form-control" Font-Size="Small" AutoPostBack="True" OnSelectedIndexChanged="TestLB5_SelectedIndexChanged"></asp:ListBox>
-                                </div>
+                                </div>                                
                                 <div style="position: absolute; bottom: 90px; right: 0px; left: 0px; height: 30px; padding: 2px 4px 2px 4px; text-align: center;">
-                                    <asp:Button ID="AddBT5" runat="server" class="yesBtn" Text="Выбрать тест" Width="100%" Height="100%" OnClick="AddBT5_Click" />
-                                </div>
-                                <div style="position: absolute; bottom: 60px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
-                                    Выбранный тест:
-                                </div>
-                                <div style="position: absolute; bottom: 30px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
-                                    <asp:Label ID="TestLabel5" runat="server" ForeColor="#FF6A13"></asp:Label>
-                                </div>
-                                <div style="position: absolute; bottom: 0px; right: 0px; left: 0px; height: 30px; padding: 2px 4px 2px 4px; text-align: center;">
                                     <button type="button" class="BtnMain" data-toggle="modal" data-target="#exampleModal" data-backdrop="false" style="width: 100%; background-color: #FF6A13; height: 100%;">
                                         Информация</button>
                                 </div>
+                                <div style="position: absolute; bottom: 60px; right: 0px; left: 0px; height: 30px; padding: 2px 4px 2px 4px; text-align: center;">
+                                    <asp:Button ID="AddBT5" runat="server" class="yesBtn" Text="Выбрать тест" Width="100%" Height="100%" OnClick="AddBT5_Click" />
+                                </div>
+                                <div style="position: absolute; bottom: 30px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
+                                    Выбранный тест:
+                                </div>
+                                <div style="position: absolute; bottom: 0px; right: 0px; left: 0px; height: 30px; padding: 6px; text-align: center;">
+                                    <asp:Label ID="TestLabel5" runat="server" ForeColor="#FF6A13"></asp:Label>
+                                </div>
+
                             </div>
                         </div>
                     </asp:Panel>
