@@ -99,7 +99,6 @@
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="date" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="time" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="fio" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="age" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="sex" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="phone" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
@@ -109,6 +108,10 @@
       <Column Name="services" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="admin" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="accept" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="comment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="name_1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="name_2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="name_3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

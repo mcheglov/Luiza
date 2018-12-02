@@ -46,4 +46,16 @@ public partial class _Layout : System.Web.UI.MasterPage
     {
 
     }
+
+    protected void UziBT_Click(object sender, EventArgs e)
+    {
+        if (rights == "Admin")
+        {
+            Response.Redirect("/Views/Uzi.aspx?param1=1");
+        }
+        else
+        {
+            Response.Redirect("/Views/Uzi.aspx?param1=0");
+        }
+    }
 }

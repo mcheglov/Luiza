@@ -1720,8 +1720,6 @@ public partial class Uzi_Zapisi : INotifyPropertyChanging, INotifyPropertyChange
 	
 	private string _time;
 	
-	private string _fio;
-	
 	private string _age;
 	
 	private string _sex;
@@ -1740,6 +1738,14 @@ public partial class Uzi_Zapisi : INotifyPropertyChanging, INotifyPropertyChange
 	
 	private System.Nullable<bool> _accept;
 	
+	private string _comment;
+	
+	private string _name_1;
+	
+	private string _name_2;
+	
+	private string _name_3;
+	
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1750,8 +1756,6 @@ public partial class Uzi_Zapisi : INotifyPropertyChanging, INotifyPropertyChange
     partial void OndateChanged();
     partial void OntimeChanging(string value);
     partial void OntimeChanged();
-    partial void OnfioChanging(string value);
-    partial void OnfioChanged();
     partial void OnageChanging(string value);
     partial void OnageChanged();
     partial void OnsexChanging(string value);
@@ -1770,6 +1774,14 @@ public partial class Uzi_Zapisi : INotifyPropertyChanging, INotifyPropertyChange
     partial void OnadminChanged();
     partial void OnacceptChanging(System.Nullable<bool> value);
     partial void OnacceptChanged();
+    partial void OncommentChanging(string value);
+    partial void OncommentChanged();
+    partial void Onname_1Changing(string value);
+    partial void Onname_1Changed();
+    partial void Onname_2Changing(string value);
+    partial void Onname_2Changed();
+    partial void Onname_3Changing(string value);
+    partial void Onname_3Changed();
     #endregion
 	
 	public Uzi_Zapisi()
@@ -1833,26 +1845,6 @@ public partial class Uzi_Zapisi : INotifyPropertyChanging, INotifyPropertyChange
 				this._time = value;
 				this.SendPropertyChanged("time");
 				this.OntimeChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fio", DbType="NVarChar(MAX)")]
-	public string fio
-	{
-		get
-		{
-			return this._fio;
-		}
-		set
-		{
-			if ((this._fio != value))
-			{
-				this.OnfioChanging(value);
-				this.SendPropertyChanging();
-				this._fio = value;
-				this.SendPropertyChanged("fio");
-				this.OnfioChanged();
 			}
 		}
 	}
@@ -2033,6 +2025,86 @@ public partial class Uzi_Zapisi : INotifyPropertyChanging, INotifyPropertyChange
 				this._accept = value;
 				this.SendPropertyChanged("accept");
 				this.OnacceptChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comment", DbType="NVarChar(MAX)")]
+	public string comment
+	{
+		get
+		{
+			return this._comment;
+		}
+		set
+		{
+			if ((this._comment != value))
+			{
+				this.OncommentChanging(value);
+				this.SendPropertyChanging();
+				this._comment = value;
+				this.SendPropertyChanged("comment");
+				this.OncommentChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name_1", DbType="NVarChar(MAX)")]
+	public string name_1
+	{
+		get
+		{
+			return this._name_1;
+		}
+		set
+		{
+			if ((this._name_1 != value))
+			{
+				this.Onname_1Changing(value);
+				this.SendPropertyChanging();
+				this._name_1 = value;
+				this.SendPropertyChanged("name_1");
+				this.Onname_1Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name_2", DbType="NVarChar(MAX)")]
+	public string name_2
+	{
+		get
+		{
+			return this._name_2;
+		}
+		set
+		{
+			if ((this._name_2 != value))
+			{
+				this.Onname_2Changing(value);
+				this.SendPropertyChanging();
+				this._name_2 = value;
+				this.SendPropertyChanged("name_2");
+				this.Onname_2Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name_3", DbType="NVarChar(MAX)")]
+	public string name_3
+	{
+		get
+		{
+			return this._name_3;
+		}
+		set
+		{
+			if ((this._name_3 != value))
+			{
+				this.Onname_3Changing(value);
+				this.SendPropertyChanging();
+				this._name_3 = value;
+				this.SendPropertyChanged("name_3");
+				this.Onname_3Changed();
 			}
 		}
 	}

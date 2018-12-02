@@ -32,7 +32,7 @@
             <div id="menuBorder" style="height: 40px; top: 65px; right: 10px; left: 10px; position: fixed; border-radius: 5px 5px 5px 5px; border: 2px solid #0097A9">
                 <div id="menu" class="menu">
                     <asp:Button class="menuBtnLeft" Text="Главная Страница" runat="server"></asp:Button>
-                    <asp:Button class="menuBtn" Text="УЗИ" runat="server"></asp:Button>
+                    <asp:Button class="menuBtn" Text="УЗИ" runat="server" ID="UziBT" OnClick="UziBT_Click"></asp:Button>
                     <asp:Button class="menuBtn" Text="Спермограмма" runat="server" OnClick="Unnamed3_Click" ID="SpermBT"></asp:Button>
                     <asp:Button class="menuBtn" Text="ВНД" runat="server"></asp:Button>
                     <asp:Button class="menuBtn" Text="Холтер" runat="server"></asp:Button>

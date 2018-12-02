@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 11.375" name="toSQL">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 12" name="toSQL">
   <DataContextMoniker Name="/toSQLDataContext" />
   <nestedChildShapes>
     <classShape Id="8862fcd7-69a5-4d9f-99d7-d7b2cd0808f8" absoluteBounds="2.625, 0.5, 2, 1.5785953776041666">
@@ -56,10 +56,10 @@
         <elementListCompartment Id="3ee8a853-33a2-43f2-849c-322ca4b8385f" absoluteBounds="4.765, 5.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="3350aec8-ab0f-4b8b-84cc-c8e6fbc2b920" absoluteBounds="4.75, 7.875, 2, 3.3093082682291666">
+    <classShape Id="3b5a0bde-0156-4a24-8011-3891833c14bd" absoluteBounds="4.75, 7.875, 2, 3.8862125651041666">
       <DataClassMoniker Name="/toSQLDataContext/Uzi_Zapisi" />
       <nestedChildShapes>
-        <elementListCompartment Id="38079fba-a5c5-47bf-b23f-d2c7f0f1956b" absoluteBounds="4.7650000000000006, 8.335, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="07e6e2b8-e40e-48c0-ad33-8d289a3802be" absoluteBounds="4.7650000000000006, 8.335, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
