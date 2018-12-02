@@ -187,9 +187,7 @@
                                 <asp:RadioButton ID="DoctorRB1" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" AutoPostBack="True" OnCheckedChanged="DoctorRB1_CheckedChanged" GroupName="doctorGP" />
                             </div>
                             <div style="position: absolute; top: 70px; right: 0px; left: 0px; bottom: 270px; padding: 4px; text-align: center;">
-                                <asp:ListBox ID="DoctorTimeLB1" runat="server" Height="100%" Width="100%" class="form-control item" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9" OnSelectedIndexChanged="DoctorTimeLB1_SelectedIndexChanged" ViewStateMode="Enabled">
-                                    <asp:ListItem>10:00 - Иванов</asp:ListItem>
-                                    <asp:ListItem>10:30</asp:ListItem>
+                                <asp:ListBox ID="DoctorTimeLB1" runat="server" Height="100%" Width="100%" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9" OnSelectedIndexChanged="DoctorTimeLB1_SelectedIndexChanged" ViewStateMode="Enabled">
                                 </asp:ListBox>
                             </div>
                             <div style="position: absolute; bottom: 240px; right: 0px; left: 0px; height: 30px; padding: 2px; text-align: center;">
@@ -231,7 +229,7 @@
                                 <asp:RadioButton ID="DoctorRB2" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" AutoPostBack="True" OnCheckedChanged="DoctorRB2_CheckedChanged" GroupName="doctorGP" />
                             </div>
                             <div style="position: absolute; top: 70px; right: 0px; left: 0px; bottom: 270px; padding: 4px; text-align: center;">
-                                <asp:ListBox ID="DoctorTimeLB2" runat="server" Height="100%" Width="100%" class="form-control item" Font-Size="Small" AutoPostBack="True" Enabled="False" Font-Bold="True" ForeColor="#0097A9"></asp:ListBox>
+                                <asp:ListBox ID="DoctorTimeLB2" runat="server" Height="100%" Width="100%" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9"></asp:ListBox>
                             </div>
                             <div style="position: absolute; bottom: 240px; right: 0px; left: 0px; height: 30px; padding: 2px; text-align: center;">
                                 <div style="top: 0px; right: 0px; bottom: 0px; left: 0px">
@@ -273,7 +271,7 @@
                                 <asp:RadioButton ID="DoctorRB3" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" AutoPostBack="True" OnCheckedChanged="DoctorRB3_CheckedChanged" GroupName="doctorGP" />
                             </div>
                             <div style="position: absolute; top: 70px; right: 0px; left: 0px; bottom: 270px; padding: 4px; text-align: center;">
-                                <asp:ListBox ID="DoctorTimeLB3" runat="server" Height="100%" Width="100%" class="form-control item" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9"></asp:ListBox>
+                                <asp:ListBox ID="DoctorTimeLB3" runat="server" Height="100%" Width="100%" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9"></asp:ListBox>
                             </div>
                             <div style="position: absolute; bottom: 240px; right: 0px; left: 0px; height: 30px; padding: 2px; text-align: center;">
                                 <div style="top: 0px; right: 0px; bottom: 0px; left: 0px">
@@ -314,7 +312,7 @@
                                 <asp:RadioButton ID="DoctorRB4" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" AutoPostBack="True" OnCheckedChanged="DoctorRB4_CheckedChanged" GroupName="doctorGP" />
                             </div>
                             <div style="position: absolute; top: 70px; right: 0px; left: 0px; bottom: 270px; padding: 4px; text-align: center;">
-                                <asp:ListBox ID="DoctorTimeLB4" runat="server" Height="100%" Width="100%" class="form-control item" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9"></asp:ListBox>
+                                <asp:ListBox ID="DoctorTimeLB4" runat="server" Height="100%" Width="100%" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9"></asp:ListBox>
                             </div>
                             <div style="position: absolute; bottom: 240px; right: 0px; left: 0px; height: 30px; padding: 2px; text-align: center;">
                                 <div style="top: 0px; right: 0px; bottom: 0px; left: 0px">
@@ -355,7 +353,7 @@
                                 <asp:RadioButton ID="DoctorRB5" class="custom-radio" runat="server" Width="100%" Font-Italic="True" Font-Size="Larger" Font-Underline="True" ForeColor="#FF6A13" AutoPostBack="True" OnCheckedChanged="DoctorRB5_CheckedChanged" GroupName="doctorGP" />
                             </div>
                             <div style="position: absolute; top: 70px; right: 0px; left: 0px; bottom: 270px; padding: 4px; text-align: center;">
-                                <asp:ListBox ID="DoctorTimeLB5" runat="server" Height="100%" Width="100%" class="form-control item" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9"></asp:ListBox>
+                                <asp:ListBox ID="DoctorTimeLB5" runat="server" Height="100%" Width="100%" Font-Size="Small" AutoPostBack="True" Font-Bold="True" ForeColor="#0097A9"></asp:ListBox>
                             </div>
                             <div style="position: absolute; bottom: 240px; right: 0px; left: 0px; height: 30px; padding: 2px; text-align: center;">
                                 <div style="top: 0px; right: 0px; bottom: 0px; left: 0px">

@@ -24,6 +24,9 @@ public partial class Views_Uzi : System.Web.UI.Page
         SubmitBT.Text = "ЗАПИСАТЬ";
         //DoctorTimeLB1.Items[0].Attributes.Add("style", "background-color: Lime; color: Red");
         //DoctorTimeLB1.Items[1].Attributes.Add("style", "background-color: Yellow; color: Red");
+        if (!IsPostBack)
+        {
+
         if (CityDL.Items.Count == 0)
         {
             var cities = (from o in db.Uzi_Cities
@@ -74,6 +77,16 @@ public partial class Views_Uzi : System.Web.UI.Page
             DoctorRB3.Text = "";
             DoctorRB4.Text = "";
             DoctorRB5.Text = "";
+            block1.Style["background-color"] = "White";
+            block2.Style["background-color"] = "White";
+            block3.Style["background-color"] = "White";
+            block4.Style["background-color"] = "White";
+            block5.Style["background-color"] = "White";
+            DoctorRB1.Checked = false;
+            DoctorRB2.Checked = false;
+            DoctorRB3.Checked = false;
+            DoctorRB4.Checked = false;
+            DoctorRB5.Checked = false;
             if (docs.Count() == 0)
             {
                 block1.Visible = false;
@@ -90,6 +103,23 @@ public partial class Views_Uzi : System.Web.UI.Page
                 block3.Visible = false;
                 block4.Visible = false;
                 block5.Visible = false;
+                var time = (from t in db.Uzi_Zapisi
+                            where t.date == DateDL.SelectedValue
+                            where t.mo == MoDL.SelectedValue
+                            where t.city == CityDL.SelectedValue
+                            where t.doctor== docs.ToList().ElementAt(0).ToString()
+                            select t);
+                for (int i=0;i<time.Count();i++)
+                {
+                    if (time.ToList().ElementAt(i).fio.Length > 0)
+                    {
+                        DoctorTimeLB1.Items.Add(time.ToList().ElementAt(i).time + " - " + time.ToList().ElementAt(i).fio);
+                    }
+                    else
+                    {
+                        DoctorTimeLB1.Items.Add(time.ToList().ElementAt(i).time);
+                    }
+                }
             }
             else if (docs.Count() == 2)
             {
@@ -100,6 +130,40 @@ public partial class Views_Uzi : System.Web.UI.Page
                 block3.Visible = false;
                 block4.Visible = false;
                 block5.Visible = false;
+                var time = (from t in db.Uzi_Zapisi
+                            where t.date == DateDL.SelectedValue
+                            where t.mo == MoDL.SelectedValue
+                            where t.city == CityDL.SelectedValue
+                            where t.doctor == docs.ToList().ElementAt(0).ToString()
+                            select t);
+                for (int i = 0; i < time.Count(); i++)
+                {
+                    if (time.ToList().ElementAt(i).fio.Length > 0)
+                    {
+                        DoctorTimeLB1.Items.Add(time.ToList().ElementAt(i).time + " - " + time.ToList().ElementAt(i).fio);
+                    }
+                    else
+                    {
+                        DoctorTimeLB1.Items.Add(time.ToList().ElementAt(i).time);
+                    }
+                }
+                var time2 = (from t in db.Uzi_Zapisi
+                            where t.date == DateDL.SelectedValue
+                            where t.mo == MoDL.SelectedValue
+                            where t.city == CityDL.SelectedValue
+                            where t.doctor == docs.ToList().ElementAt(1).ToString()
+                            select t);
+                for (int i = 0; i < time2.Count(); i++)
+                {
+                    if (time2.ToList().ElementAt(i).fio.Length > 0)
+                    {
+                        DoctorTimeLB2.Items.Add(time2.ToList().ElementAt(i).time + " - " + time2.ToList().ElementAt(i).fio);
+                    }
+                    else
+                    {
+                        DoctorTimeLB2.Items.Add(time2.ToList().ElementAt(i).time);
+                    }
+                }
 
             }
             else if (docs.Count() == 3)
@@ -139,6 +203,8 @@ public partial class Views_Uzi : System.Web.UI.Page
                 block5.Visible = true;
             }
         }
+        }
+
     }
 
     protected void SettingsBT_Click(object sender, EventArgs e)
@@ -186,6 +252,7 @@ public partial class Views_Uzi : System.Web.UI.Page
             SearchTB5.Text = "";
             TestLB5.Text = "";
             TestLabel5.Text = "";
+
         }
 
     }
@@ -372,6 +439,7 @@ public partial class Views_Uzi : System.Web.UI.Page
         {
             DateDL.Items.Add(dates[i].ToShortDateString());
         }
+
     }
 
     protected void MoDL_SelectedIndexChanged(object sender, EventArgs e)
