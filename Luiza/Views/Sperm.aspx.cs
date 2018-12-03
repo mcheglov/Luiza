@@ -218,7 +218,7 @@ public partial class Views_Sperm : System.Web.UI.Page
                     {
                         try
                         {
-                            string t = (DateTime.ParseExact(SpermGV.Rows[index].Cells[1].Text, "HH:mm:ss", null)).ToShortTimeString();
+                            string t = (DateTime.ParseExact(SpermGV.Rows[index].Cells[1].Text, "H:mm:ss", null)).ToShortTimeString();
                             var address = from a in db.Sperm_Cities
                                           where a.City == CityDL.SelectedValue
                                           where a.MO == MoDL.SelectedValue
@@ -251,7 +251,7 @@ public partial class Views_Sperm : System.Web.UI.Page
                         catch (Exception ex)
                         {
                             spermStatus.ForeColor = System.Drawing.Color.Red;
-                            spermStatus.Text = "Ошибка";
+                            spermStatus.Text = ex.ToString();
                         }
                     }
                 }
