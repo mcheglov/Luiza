@@ -4,7 +4,7 @@
     ЛУИЗА - УЗИ - Расписание
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="Server">
-<div style="padding: 4px; top: 0px; right: 0px; bottom: 0px; left: 0px; position: absolute">
+    <div style="padding: 4px; top: 0px; right: 0px; bottom: 0px; left: 0px; position: absolute">
         <div style="margin: 4px; border: 1px solid #FF6A13; top: 100px; position: absolute; right: 300px; left: 300px; height: 600px; text-align: center; border-radius: 5px 5px 5px 5px;">
             <div style="top: 4px; left: 4px; width: 190px; height: 190px; position: absolute;">
                 <asp:Calendar ID="uziCalendar" runat="server" Height="100%" Width="100%" OnSelectionChanged="uziCalendar_SelectionChanged">
@@ -50,8 +50,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="width: 25%;">Врач</td>
-                        <td style="width: 25%;">
+                        <td style="width: 25%; height: 59px;">Врач</td>
+                        <td style="width: 25%; height: 59px;">
                             <asp:DropDownList ID="uziDoctor" class="form-control" runat="server" Width="100%" AutoPostBack="True" DataSourceID="uziDoctorDS" DataTextField="DOCTOR" DataValueField="DOCTOR">
                             </asp:DropDownList>
                             <asp:LinqDataSource ID="uziDoctorDS" runat="server" ContextTypeName="toSQLDataContext" EntityTypeName="" GroupBy="DOCTOR" Select="new (key as DOCTOR, it as Uzi_Doctor)" TableName="Uzi_Doctor" Where="CITY == @CITY &amp;&amp; MO == @MO">
@@ -61,22 +61,28 @@
                                 </WhereParameters>
                             </asp:LinqDataSource>
                         </td>
-                        <td colspan="2">
-                            <asp:Button ID="Button1" runat="server" CssClass="yesBtn" Text="Создать расписание" Width="200px" OnClick="Button1_Click" />
-                            <asp:Button ID="Button3" runat="server" CssClass="noBtn" Text="Удалить расписание" Width="200px" OnClick="Button3_Click" OnClientClick="return confirm('Нажмите ОК, если хотите удалить расписание на день');" />
+                        <td style="height: 59px">
+                            Время окончания приема</td>
+                        <td style="height: 59px">
+                            <asp:TextBox ID="doctorEnd" class="form-control" runat="server" Width="100%" TextMode="Time"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4">
+                        <td>
                             <asp:Label ID="errorLabel" runat="server" ForeColor="Red"></asp:Label>
                         </td>
+                        <td>
+                            &nbsp;</td>
+                        <td colspan="2">
+                            <asp:Button ID="Button1" runat="server" CssClass="yesBtn" Text="Создать расписание" Width="200px" OnClick="Button1_Click" OnClientClick="return confirm('Нажмите ОК, если хотите создать расписание на день');" />
+                            <asp:Button ID="Button3" runat="server" CssClass="noBtn" Text="Удалить расписание" Width="200px" OnClick="Button3_Click" OnClientClick="return confirm('Нажмите ОК, если хотите удалить расписание на день');" /></td>
                     </tr>
                 </table>
 
             </div>
             <div style="position: absolute; top: 200px; right: 0px; bottom: 0px; left: 0px; overflow: scroll; overflow-x: hidden;"> 
 
-                    <asp:GridView ID="UziShedGV" runat="server" AutoGenerateColumns="False" BorderColor="#0097A9" BorderWidth="1px" CellPadding="2" Width="100%" DataSourceID="UziShedDS" DataKeyNames="ID" OnPreRender="UziShedGV_PreRender">
+                    <asp:GridView ID="UziShedGV" runat="server" AutoGenerateColumns="False" BorderColor="#0097A9" BorderWidth="1px" CellPadding="2" Width="100%" DataSourceID="UziShedDS" DataKeyNames="ID" OnPreRender="UziShedGV_PreRender" OnSelectedIndexChanged="UziShedGV_SelectedIndexChanged1">
                         <Columns>
                             <asp:BoundField DataField="date" HeaderText="Дата" ReadOnly="True" SortExpression="date" />
                             <asp:BoundField DataField="time" HeaderText="Время" ReadOnly="True" SortExpression="time" />

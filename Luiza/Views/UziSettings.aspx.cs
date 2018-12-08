@@ -7,10 +7,18 @@ using System.Web.UI.WebControls;
 
 public partial class Views_UziSettings : System.Web.UI.Page
 {
+    string rights;
     toSQLDataContext db = new toSQLDataContext();
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Request.Cookies["Visitor"] == null)
+        {
+            Response.Redirect("/Views/403.aspx");
+        }
+        var name = (from o in db.Users
+                    where o.Login == Request.Cookies["Visitor"]["user"]
+                    select o);
+        rights = name.ToList().ElementAt(0).Rights.ToString();
     }
 
     protected void uziCalendar_SelectionChanged(object sender, EventArgs e)
@@ -57,15 +65,22 @@ public partial class Views_UziSettings : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        priem(doctorStart.Text, 20, uziCity.SelectedValue, uziDate.Text, uziMo.SelectedValue, uziDoctor.SelectedValue);
+        priem(doctorStart.Text, doctorEnd.Text, 20, uziCity.SelectedValue, uziDate.Text, uziMo.SelectedValue, uziDoctor.SelectedValue);
     }
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-
+        if (rights == "Admin")
+        {
+            Response.Redirect("/Views/Uzi.aspx?param1=1");
+        }
+        else
+        {
+            Response.Redirect("/Views/Uzi.aspx?param1=0");
+        }
     }
 
-    public void priem(string startTime, int visitTime, string City, string Date, string MO, string Doctor)
+    public void priem(string startTime, string endTime, int visitTime, string City, string Date, string MO, string Doctor)
     {
         errorLabel.ForeColor = System.Drawing.Color.Red;
         errorLabel.Text = "";
@@ -104,7 +119,6 @@ public partial class Views_UziSettings : System.Web.UI.Page
                     uz.name_2 = "";
                     uz.name_3 = "";
                     uz.admin= "";
-                    uz.hidden = true;
                     uz.city = City;
                     uz.date = Date;
                     uz.age = "";
@@ -116,6 +130,14 @@ public partial class Views_UziSettings : System.Web.UI.Page
                     uz.phone = "";
                     uz.time = vs.ElementAt(i).ToString();
                     uz.comment = "";
+                    if (Convert.ToDateTime(vs.ElementAt(i)) >= Convert.ToDateTime(startTime) && Convert.ToDateTime(vs.ElementAt(i)) < Convert.ToDateTime(endTime))
+                    {
+                        uz.hidden = false;
+                    }
+                    else
+                    {
+                        uz.hidden = true;
+                    }
                     db.GetTable<Uzi_Zapisi>().InsertOnSubmit(uz);
                     db.SubmitChanges();
                 }
@@ -129,6 +151,11 @@ public partial class Views_UziSettings : System.Web.UI.Page
             errorLabel.ForeColor = System.Drawing.Color.Red;
             errorLabel.Text = "Ошибка";
         }
+
+    }
+
+    protected void UziShedGV_SelectedIndexChanged1(object sender, EventArgs e)
+    {
 
     }
 }
