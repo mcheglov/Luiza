@@ -112,6 +112,7 @@
       <Column Name="name_1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="name_2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="name_3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

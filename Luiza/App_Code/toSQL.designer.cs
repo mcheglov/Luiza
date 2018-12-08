@@ -1746,6 +1746,8 @@ public partial class Uzi_Zapisi : INotifyPropertyChanging, INotifyPropertyChange
 	
 	private string _name_3;
 	
+	private System.Nullable<bool> _hidden;
+	
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1782,6 +1784,8 @@ public partial class Uzi_Zapisi : INotifyPropertyChanging, INotifyPropertyChange
     partial void Onname_2Changed();
     partial void Onname_3Changing(string value);
     partial void Onname_3Changed();
+    partial void OnhiddenChanging(System.Nullable<bool> value);
+    partial void OnhiddenChanged();
     #endregion
 	
 	public Uzi_Zapisi()
@@ -2105,6 +2109,26 @@ public partial class Uzi_Zapisi : INotifyPropertyChanging, INotifyPropertyChange
 				this._name_3 = value;
 				this.SendPropertyChanged("name_3");
 				this.Onname_3Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hidden", DbType="Bit")]
+	public System.Nullable<bool> hidden
+	{
+		get
+		{
+			return this._hidden;
+		}
+		set
+		{
+			if ((this._hidden != value))
+			{
+				this.OnhiddenChanging(value);
+				this.SendPropertyChanging();
+				this._hidden = value;
+				this.SendPropertyChanged("hidden");
+				this.OnhiddenChanged();
 			}
 		}
 	}

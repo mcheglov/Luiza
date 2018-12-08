@@ -14,10 +14,12 @@ public partial class Views_Uzi : System.Web.UI.Page
         if (Request.QueryString["param1"] == "1")
         {
             SettingsBT.Visible = true;
+            DoctorBT.Visible = true;
         }
         else
         {
             SettingsBT.Visible = false;
+            DoctorBT.Visible = false;
         }
         if (!IsPostBack)
         {
@@ -542,7 +544,7 @@ public partial class Views_Uzi : System.Web.UI.Page
 
     protected void SettingsBT_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("/Views/UziSettings.aspx");
     }
 
     protected void SubmitBT_Click(object sender, EventArgs e)
@@ -1730,4 +1732,9 @@ public partial class Views_Uzi : System.Web.UI.Page
         }
     }
 
+
+    protected void DoctorBT_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("/Views/UziAddDoctor.aspx");
+    }
 }

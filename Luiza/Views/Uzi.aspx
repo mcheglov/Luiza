@@ -182,8 +182,9 @@
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px; text-align: center;">
                 <asp:Label ID="uziStatus" runat="server" ForeColor="Red"></asp:Label>
             </div>
-            <div id="settings" runat="server" class="settings" style="position: fixed; height: 30px; left: 450px; width: 200px; text-align: center; top: 20px;">
-                <asp:Button ID="SettingsBT" runat="server" CssClass="Btn" Text="Настройки" Width="140px" OnClick="SettingsBT_Click" />
+            <div id="settings" runat="server" class="settings" style="position: fixed; height: 30px; left: 450px; width: 400px; text-align: left; top: 20px;">
+                <asp:Button ID="SettingsBT" runat="server" CssClass="Btn" Text="Расписание" Width="49%" OnClick="SettingsBT_Click" Visible="False" />
+            &nbsp;<asp:Button ID="DoctorBT" runat="server" CssClass="Btn" Text="Добавить доктора" Width="49%" OnClick="DoctorBT_Click" Visible="False" />
             </div>
 
         </div>

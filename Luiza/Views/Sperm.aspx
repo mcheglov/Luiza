@@ -136,7 +136,7 @@
         </div>
         <div id="right" class="right" style="border-width: 2px; border-color: #0097A9; position: absolute; top: 0px; right: 0px; bottom: 0px; left: 200px; padding: 4px 4px 4px 4px; border-left-style: solid; margin-left: 6px;">
             <div id="rightFrame" class="rightFrame">
-                <div style="padding: 4px; top: 0px; right: 0px; bottom: 34px; left: 0px; position: absolute; overflow: scroll; overflow-x: hidden;">
+                <div style="padding: 4px; top: 2px; right: -1px; bottom: -19px; left: 1px; position: absolute; overflow: scroll; overflow-x: hidden;">
                     <asp:GridView ID="SpermGV" runat="server" AllowSorting="True" AutoGenerateColumns="False" BorderColor="#0097A9" BorderWidth="1px" CellPadding="2" OnRowDataBound="SpermGV_RowDataBound" Width="100%" OnSelectedIndexChanged="SpermGV_SelectedIndexChanged">
                         <Columns>
                             <asp:CommandField ShowSelectButton="True" SelectText="Выбрать" />
