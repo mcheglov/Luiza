@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -86,11 +89,6 @@ public partial class Views_Uzi : System.Web.UI.Page
         DoctorRB3.Text = "";
         DoctorRB4.Text = "";
         DoctorRB5.Text = "";
-        DoctorRB1.Checked = false;
-        DoctorRB2.Checked = false;
-        DoctorRB3.Checked = false;
-        DoctorRB4.Checked = false;
-        DoctorRB5.Checked = false;
         if (docs.Count() == 0)
         {
             Panel1.Visible = false;
@@ -346,6 +344,7 @@ public partial class Views_Uzi : System.Web.UI.Page
                     where t.mo == MoDL.SelectedValue
                     where t.city == CityDL.SelectedValue
                     where t.doctor == doctor
+                    where t.hidden == false
                     select t);
         for (int i = 0; i < time.Count(); i++)
         {
@@ -387,6 +386,7 @@ public partial class Views_Uzi : System.Web.UI.Page
                     where t.mo == MoDL.SelectedValue
                     where t.city == CityDL.SelectedValue
                     where t.doctor == doctor
+                    where t.hidden == false
                     select t);
         for (int i = 0; i < time.Count(); i++)
         {
@@ -428,6 +428,7 @@ public partial class Views_Uzi : System.Web.UI.Page
                     where t.mo == MoDL.SelectedValue
                     where t.city == CityDL.SelectedValue
                     where t.doctor == doctor
+                    where t.hidden == false
                     select t);
         for (int i = 0; i < time.Count(); i++)
         {
@@ -469,6 +470,7 @@ public partial class Views_Uzi : System.Web.UI.Page
                     where t.mo == MoDL.SelectedValue
                     where t.city == CityDL.SelectedValue
                     where t.doctor == doctor
+                    where t.hidden == false
                     select t);
         for (int i = 0; i < time.Count(); i++)
         {
@@ -510,6 +512,7 @@ public partial class Views_Uzi : System.Web.UI.Page
                     where t.mo == MoDL.SelectedValue
                     where t.city == CityDL.SelectedValue
                     where t.doctor == doctor
+                    where t.hidden == false
                     select t);
         for (int i = 0; i < time.Count(); i++)
         {
@@ -578,7 +581,11 @@ public partial class Views_Uzi : System.Web.UI.Page
                                           where a.city == CityDL.SelectedValue.ToString()
                                           where a.mo == MoDL.SelectedValue.ToString()
                                           select a;
-                            //toSend(phone: PhoneTB.Text, message: "Запись УЗИ " + DateDL.SelectedValue + " в " + t + " по адресу " + CityDL.SelectedValue.ToString() + " " + address.ToList().ElementAt(0).address.ToString() + " т. 8-800-234-40-50");
+                            string phone = PhoneTB.Text;
+                            phone = phone.Remove(13, 1);
+                            phone = phone.Remove(10, 1);
+                            phone = phone.Remove(5, 2);
+                            phone = phone.Remove(1, 1);
                             Uzi_Zapisi editZapis = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text));
                             editZapis.name_1 = FornameTB.Text;
                             editZapis.name_2 = NameTB.Text;
@@ -601,7 +608,7 @@ public partial class Views_Uzi : System.Web.UI.Page
                                 var zapis2 = from z in db.Uzi_Zapisi
                                              where z.ID == Convert.ToInt32(recordID.Text) + 1
                                              select z;
-                                if (zapis2.ToList().ElementAt(0).name_1.ToString().Length > 0)
+                                if (zapis2.ToList().ElementAt(0).name_1.ToString().Length > 0 || zapis2.ToList().ElementAt(0).hidden.ToString() == "True")
                                 {
                                     uziStatus.ForeColor = System.Drawing.Color.Red;
                                     uziStatus.Text = "Невозможно записать! ";
@@ -619,7 +626,7 @@ public partial class Views_Uzi : System.Web.UI.Page
                                 var zapis2 = from z in db.Uzi_Zapisi
                                              where z.ID == Convert.ToInt32(recordID.Text) + 1
                                              select z;
-                                if (zapis2.ToList().ElementAt(0).name_1.ToString().Length > 0)
+                                if (zapis2.ToList().ElementAt(0).name_1.ToString().Length > 0 || zapis2.ToList().ElementAt(0).hidden.ToString() == "True")
                                 {
                                     uziStatus.ForeColor = System.Drawing.Color.Red;
                                     uziStatus.Text = "Невозможно записать! ";
@@ -630,7 +637,7 @@ public partial class Views_Uzi : System.Web.UI.Page
                                     var zapis3 = from z in db.Uzi_Zapisi
                                                  where z.ID == Convert.ToInt32(recordID.Text) + 2
                                                  select z;
-                                    if (zapis3.ToList().ElementAt(0).name_1.ToString().Length > 0)
+                                    if (zapis3.ToList().ElementAt(0).name_1.ToString().Length > 0 || zapis3.ToList().ElementAt(0).hidden.ToString() == "True")
                                     {
                                         uziStatus.ForeColor = System.Drawing.Color.Red;
                                         uziStatus.Text = "Невозможно записать! ";
@@ -657,12 +664,15 @@ public partial class Views_Uzi : System.Web.UI.Page
                                 MiddlenameTB.Text = "";
                                 PhoneTB.Text = "";
                                 DoctorTimeLB1.SelectedIndex = -1;
+                                TestLabel1.Text = "";
+                                TestLB1.Items.Clear();
                                 CommentTB.Text = "";
                                 AgeDL.SelectedIndex = 0;
                                 SexDL.SelectedIndex = 0;
                                 recordID.Text = "";
                                 uziStatus.ForeColor = System.Drawing.Color.LimeGreen;
                                 uziStatus.Text = "Запись добавлена";
+                                toSend(phone: phone, message: "Запись УЗИ " + DateDL.SelectedValue + " в " + t + " по адресу " + CityDL.SelectedValue.ToString() + " " + address.ToList().ElementAt(0).address.ToString() + " т. 8-800-234-40-50");
                             }
                             else
                             {
@@ -680,6 +690,143 @@ public partial class Views_Uzi : System.Web.UI.Page
             }
         }
 
+        if (DoctorRB2.Checked)
+        {
+            if (DoctorTimeLB2.SelectedIndex != -1)
+            {
+                var zapis = from z in db.Uzi_Zapisi
+                            where z.ID == Convert.ToInt32(recordID.Text)
+                            select z;
+                if (zapis.ToList().ElementAt(0).name_1.ToString().Length > 0)
+                {
+                    uziStatus.ForeColor = System.Drawing.Color.Red;
+                    uziStatus.Text = "Запись уже занята";
+
+                }
+                else
+                {
+                    if (PhoneTB.Text.Length < 16)
+                    {
+                        uziStatus.ForeColor = System.Drawing.Color.Red;
+                        uziStatus.Text = "Неверно введен номер телефона";
+                    }
+                    else
+                    {
+                        try
+                        {
+                            string t = DoctorTimeLB2.SelectedValue;
+                            var address = from a in db.Uzi_Cities
+                                          where a.city == CityDL.SelectedValue.ToString()
+                                          where a.mo == MoDL.SelectedValue.ToString()
+                                          select a;
+                            string phone = PhoneTB.Text;
+                            phone = phone.Remove(13, 1);
+                            phone = phone.Remove(10, 1);
+                            phone = phone.Remove(5, 2);
+                            phone = phone.Remove(1, 1);
+                            Uzi_Zapisi editZapis = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text));
+                            editZapis.name_1 = FornameTB.Text;
+                            editZapis.name_2 = NameTB.Text;
+                            editZapis.name_3 = MiddlenameTB.Text;
+                            editZapis.phone = PhoneTB.Text;
+                            editZapis.age = AgeDL.SelectedValue;
+                            editZapis.sex = SexDL.SelectedValue;
+                            editZapis.mo = MoDL.SelectedValue;
+                            editZapis.city = CityDL.SelectedValue;
+                            editZapis.comment = CommentTB.Text;
+                            editZapis.services = TestLabel1.Text;
+                            editZapis.admin = Request.Cookies["Visitor"]["user"];
+                            int err = 0;
+                            var duration = (from o in db.Uzi_Doctor
+                                            where o.DOCTOR == DoctorRB2.Text
+                                            where o.TEST == TestLabel2.Text
+                                            select o);
+                            if (duration.ToList().ElementAt(0).DURATION.ToString() == "40" || duration.ToList().ElementAt(0).DURATION.ToString() == "30")
+                            {
+                                var zapis2 = from z in db.Uzi_Zapisi
+                                             where z.ID == Convert.ToInt32(recordID.Text) + 1
+                                             select z;
+                                if (zapis2.ToList().ElementAt(0).name_1.ToString().Length > 0 || zapis2.ToList().ElementAt(0).hidden.ToString() == "True")
+                                {
+                                    uziStatus.ForeColor = System.Drawing.Color.Red;
+                                    uziStatus.Text = "Невозможно записать! ";
+                                    err = 1;
+                                }
+                                else
+                                {
+                                    Uzi_Zapisi editZapis2 = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text) + 1);
+                                    editZapis2.name_1 = "Продолжение ID:" + recordID.Text;
+                                    db.SubmitChanges();
+                                }
+                            }
+                            if (duration.ToList().ElementAt(0).DURATION.ToString() == "60" || duration.ToList().ElementAt(0).DURATION.ToString() == "45")
+                            {
+                                var zapis2 = from z in db.Uzi_Zapisi
+                                             where z.ID == Convert.ToInt32(recordID.Text) + 1
+                                             select z;
+                                if (zapis2.ToList().ElementAt(0).name_1.ToString().Length > 0 || zapis2.ToList().ElementAt(0).hidden.ToString() == "True")
+                                {
+                                    uziStatus.ForeColor = System.Drawing.Color.Red;
+                                    uziStatus.Text = "Невозможно записать! ";
+                                    err = 1;
+                                }
+                                else
+                                {
+                                    var zapis3 = from z in db.Uzi_Zapisi
+                                                 where z.ID == Convert.ToInt32(recordID.Text) + 2
+                                                 select z;
+                                    if (zapis3.ToList().ElementAt(0).name_1.ToString().Length > 0 || zapis3.ToList().ElementAt(0).hidden.ToString() == "True")
+                                    {
+                                        uziStatus.ForeColor = System.Drawing.Color.Red;
+                                        uziStatus.Text = "Невозможно записать! ";
+                                        err = 1;
+                                    }
+                                    else
+                                    {
+                                        Uzi_Zapisi editZapis2 = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text) + 1);
+                                        editZapis2.name_1 = "Продолжение ID:" + recordID.Text;
+                                        db.SubmitChanges();
+                                        Uzi_Zapisi editZapis3 = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text) + 2);
+                                        editZapis3.name_1 = "Продолжение ID:" + recordID.Text;
+                                        db.SubmitChanges();
+                                    }
+                                }
+                            }
+
+                            if (err == 0)
+                            {
+                                db.SubmitChanges();
+                                RbUpdate();
+                                NameTB.Text = "";
+                                FornameTB.Text = "";
+                                MiddlenameTB.Text = "";
+                                PhoneTB.Text = "";
+                                DoctorTimeLB2.SelectedIndex = -1;
+                                TestLabel2.Text = "";
+                                TestLB2.Items.Clear();
+                                CommentTB.Text = "";
+                                AgeDL.SelectedIndex = 0;
+                                SexDL.SelectedIndex = 0;
+                                recordID.Text = "";
+                                uziStatus.ForeColor = System.Drawing.Color.LimeGreen;
+                                uziStatus.Text = "Запись добавлена";
+                                toSend(phone: phone, message: "Запись УЗИ " + DateDL.SelectedValue + " в " + t + " по адресу " + CityDL.SelectedValue.ToString() + " " + address.ToList().ElementAt(0).address.ToString() + " т. 8-800-234-40-50");
+                            }
+                            else
+                            {
+                                uziStatus.ForeColor = System.Drawing.Color.Red;
+                                uziStatus.Text = "Ошибка";
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            uziStatus.ForeColor = System.Drawing.Color.Red;
+                            uziStatus.Text = ex.ToString();
+                        }
+                    }
+                }
+            }
+        }
     }
 
     protected void MiddlenameTB_TextChanged(object sender, EventArgs e)
@@ -730,6 +877,7 @@ public partial class Views_Uzi : System.Web.UI.Page
             SearchTB5.Text = "";
             TestLB5.Items.Clear();
             TestLabel5.Text = "";
+            RbUpdate();
 
         }
 
@@ -777,6 +925,7 @@ public partial class Views_Uzi : System.Web.UI.Page
             SearchTB5.Text = "";
             TestLB5.Items.Clear();
             TestLabel5.Text = "";
+            RbUpdate();
         }
 
     }
@@ -823,6 +972,7 @@ public partial class Views_Uzi : System.Web.UI.Page
             SearchTB5.Text = "";
             TestLB5.Items.Clear();
             TestLabel5.Text = "";
+            RbUpdate();
         }
     }
 
@@ -868,6 +1018,7 @@ public partial class Views_Uzi : System.Web.UI.Page
             SearchTB5.Text = "";
             TestLB5.Items.Clear();
             TestLabel5.Text = "";
+            RbUpdate();
         }
     }
 
@@ -913,6 +1064,7 @@ public partial class Views_Uzi : System.Web.UI.Page
             SearchTB4.Text = "";
             TestLB4.Items.Clear();
             TestLabel4.Text = "";
+            RbUpdate();
         }
 
     }
@@ -1672,6 +1824,26 @@ public partial class Views_Uzi : System.Web.UI.Page
                     where d.mo == MoDL.SelectedValue.ToString()
                     where d.date == DateDL.SelectedValue
                     select d.doctor).Distinct();
+        Uzi_Zapisi editZapis2 = db.Uzi_Zapisi.FirstOrDefault(x => x.name_1.Contains(recordID.Text));
+        if (editZapis2 is null)
+        {
+
+        }
+        else
+        {
+            editZapis2.name_1 = "";
+            db.SubmitChanges();
+        }
+        Uzi_Zapisi editZapis3 = db.Uzi_Zapisi.FirstOrDefault(x => x.name_1.Contains(recordID.Text));
+        if (editZapis3 is null)
+        {
+
+        }
+        else
+        {
+            editZapis3.name_1 = "";
+            db.SubmitChanges();
+        }
         if (DoctorRB1.Checked)
         {
             time1(docs.ToList().ElementAt(0).ToString());
@@ -1692,6 +1864,10 @@ public partial class Views_Uzi : System.Web.UI.Page
         {
             time5(docs.ToList().ElementAt(4).ToString());
         }
+        SubmitBT.Visible = true;
+        delBT.Visible = false;
+        ChangeBT.Visible = false;
+        ConfirmBT.Visible = false;
 
     }
 
@@ -1732,9 +1908,32 @@ public partial class Views_Uzi : System.Web.UI.Page
         }
     }
 
-
     protected void DoctorBT_Click(object sender, EventArgs e)
     {
         Response.Redirect("/Views/UziAddDoctor.aspx");
+    }
+
+    private void toSend(string phone, string message)
+    {
+        string toCode = message + ";suz;" + phone + ";INVITRO;474c70f277e6f";
+        byte[] bytes = Encoding.UTF8.GetBytes(toCode);
+        var sha1 = SHA1.Create();
+        byte[] hashBytes = sha1.ComputeHash(bytes);
+        var sb = new StringBuilder(hashBytes.Length * 2);
+        foreach (byte b in hashBytes)
+        {
+            sb.Append(b.ToString("x2"));
+        }
+        MD5 md5 = System.Security.Cryptography.MD5.Create();
+        byte[] inputBytes = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
+        byte[] hash = md5.ComputeHash(inputBytes);
+        StringBuilder sb1 = new StringBuilder();
+        for (int i = 0; i < hash.Length; i++)
+        {
+            sb1.Append(hash[i].ToString("x2"));
+        }
+        string toSend = "https://mainsms.ru/api/mainsms/message/send?project=suz&sender=INVITRO&message=" + message + "&recipients=" + phone + "&sign=" + sb1.ToString();
+        WebRequest req = WebRequest.Create(toSend);
+        WebResponse resp = req.GetResponse();
     }
 }
