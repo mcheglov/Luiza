@@ -671,8 +671,6 @@ public partial class Views_Uzi : System.Web.UI.Page
                                 AgeDL.SelectedIndex = 0;
                                 SexDL.SelectedIndex = 0;
                                 recordID.Text = "";
-                                uziStatus.ForeColor = System.Drawing.Color.LimeGreen;
-                                uziStatus.Text = "Запись добавлена";
                                 toSend(phone: phone, message: "Запись УЗИ " + DateDL.SelectedValue + " в " + t + " по адресу " + CityDL.SelectedValue.ToString() + " " + address.ToList().ElementAt(0).address.ToString() + " т. 8-800-234-40-50");
                             }
                             else
