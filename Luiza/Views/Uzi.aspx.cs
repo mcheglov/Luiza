@@ -89,6 +89,7 @@ public partial class Views_Uzi : System.Web.UI.Page
         DoctorRB3.Text = "";
         DoctorRB4.Text = "";
         DoctorRB5.Text = "";
+        uziStatus.Text = "";
         if (docs.Count() == 0)
         {
             Panel1.Visible = false;
