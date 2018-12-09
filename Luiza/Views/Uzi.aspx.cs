@@ -568,10 +568,10 @@ public partial class Views_Uzi : System.Web.UI.Page
                 }
                 else
                 {
-                    if (PhoneTB.Text.Length < 16)
+                    if (PhoneTB.Text.Length < 16 || FornameTB.Text =="" || NameTB.Text =="" || TestLabel1.Text =="")
                     {
                         uziStatus.ForeColor = System.Drawing.Color.Red;
-                        uziStatus.Text = "Неверно введен номер телефона";
+                        uziStatus.Text = "Проверьте правильность введенных данных";
                     }
                     else
                     {
@@ -706,10 +706,10 @@ public partial class Views_Uzi : System.Web.UI.Page
                 }
                 else
                 {
-                    if (PhoneTB.Text.Length < 16)
+                    if (PhoneTB.Text.Length < 16 || FornameTB.Text == "" || NameTB.Text == "" || TestLabel2.Text == "")
                     {
                         uziStatus.ForeColor = System.Drawing.Color.Red;
-                        uziStatus.Text = "Неверно введен номер телефона";
+                        uziStatus.Text = "Проверьте правильность введенных данных";
                     }
                     else
                     {
@@ -842,10 +842,10 @@ public partial class Views_Uzi : System.Web.UI.Page
                 }
                 else
                 {
-                    if (PhoneTB.Text.Length < 16)
+                    if (PhoneTB.Text.Length < 16 || FornameTB.Text == "" || NameTB.Text == "" || TestLabel3.Text == "")
                     {
                         uziStatus.ForeColor = System.Drawing.Color.Red;
-                        uziStatus.Text = "Неверно введен номер телефона";
+                        uziStatus.Text = "Проверьте правильность введенных данных";
                     }
                     else
                     {
@@ -875,8 +875,8 @@ public partial class Views_Uzi : System.Web.UI.Page
                             editZapis.admin = Request.Cookies["Visitor"]["user"];
                             int err = 0;
                             var duration = (from o in db.Uzi_Doctor
-                                            where o.DOCTOR == DoctorRB2.Text
-                                            where o.TEST == TestLabel2.Text
+                                            where o.DOCTOR == DoctorRB3.Text
+                                            where o.TEST == TestLabel3.Text
                                             select o);
                             if (duration.ToList().ElementAt(0).DURATION.ToString() == "40" || duration.ToList().ElementAt(0).DURATION.ToString() == "30")
                             {
@@ -978,10 +978,10 @@ public partial class Views_Uzi : System.Web.UI.Page
                 }
                 else
                 {
-                    if (PhoneTB.Text.Length < 16)
+                    if (PhoneTB.Text.Length < 16 || FornameTB.Text == "" || NameTB.Text == "" || TestLabel4.Text == "")
                     {
                         uziStatus.ForeColor = System.Drawing.Color.Red;
-                        uziStatus.Text = "Неверно введен номер телефона";
+                        uziStatus.Text = "Проверьте правильность введенных данных";
                     }
                     else
                     {
@@ -1011,8 +1011,8 @@ public partial class Views_Uzi : System.Web.UI.Page
                             editZapis.admin = Request.Cookies["Visitor"]["user"];
                             int err = 0;
                             var duration = (from o in db.Uzi_Doctor
-                                            where o.DOCTOR == DoctorRB2.Text
-                                            where o.TEST == TestLabel2.Text
+                                            where o.DOCTOR == DoctorRB4.Text
+                                            where o.TEST == TestLabel4.Text
                                             select o);
                             if (duration.ToList().ElementAt(0).DURATION.ToString() == "40" || duration.ToList().ElementAt(0).DURATION.ToString() == "30")
                             {
@@ -1114,10 +1114,10 @@ public partial class Views_Uzi : System.Web.UI.Page
                 }
                 else
                 {
-                    if (PhoneTB.Text.Length < 16)
+                    if (PhoneTB.Text.Length < 16 || FornameTB.Text == "" || NameTB.Text == "" || TestLabel5.Text == "")
                     {
                         uziStatus.ForeColor = System.Drawing.Color.Red;
-                        uziStatus.Text = "Неверно введен номер телефона";
+                        uziStatus.Text = "Проверьте правильность введенных данных";
                     }
                     else
                     {
@@ -1147,8 +1147,8 @@ public partial class Views_Uzi : System.Web.UI.Page
                             editZapis.admin = Request.Cookies["Visitor"]["user"];
                             int err = 0;
                             var duration = (from o in db.Uzi_Doctor
-                                            where o.DOCTOR == DoctorRB2.Text
-                                            where o.TEST == TestLabel2.Text
+                                            where o.DOCTOR == DoctorRB5.Text
+                                            where o.TEST == TestLabel5.Text
                                             select o);
                             if (duration.ToList().ElementAt(0).DURATION.ToString() == "40" || duration.ToList().ElementAt(0).DURATION.ToString() == "30")
                             {
@@ -1352,7 +1352,7 @@ public partial class Views_Uzi : System.Web.UI.Page
             DoctorRB5.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FF6A13");
             DoctorRB5.BackColor = System.Drawing.Color.White;
             var info = (from i in db.Uzi_Doctor
-                        where i.DOCTOR == DoctorRB4.Text
+                        where i.DOCTOR == DoctorRB3.Text
                         where i.CITY == CityDL.SelectedValue
                         where i.MO == MoDL.SelectedValue
                         select i.RESTRICTION);
