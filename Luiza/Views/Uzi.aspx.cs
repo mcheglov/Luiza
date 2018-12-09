@@ -808,8 +808,414 @@ public partial class Views_Uzi : System.Web.UI.Page
                                 AgeDL.SelectedIndex = 0;
                                 SexDL.SelectedIndex = 0;
                                 recordID.Text = "";
-                                uziStatus.ForeColor = System.Drawing.Color.LimeGreen;
-                                uziStatus.Text = "Запись добавлена";
+                                toSend(phone: phone, message: "Запись УЗИ " + DateDL.SelectedValue + " в " + t + " по адресу " + CityDL.SelectedValue.ToString() + " " + address.ToList().ElementAt(0).address.ToString() + " т. 8-800-234-40-50");
+                            }
+                            else
+                            {
+                                uziStatus.ForeColor = System.Drawing.Color.Red;
+                                uziStatus.Text = "Ошибка";
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            uziStatus.ForeColor = System.Drawing.Color.Red;
+                            uziStatus.Text = ex.ToString();
+                        }
+                    }
+                }
+            }
+        }
+
+        if (DoctorRB3.Checked)
+        {
+            if (DoctorTimeLB3.SelectedIndex != -1)
+            {
+                var zapis = from z in db.Uzi_Zapisi
+                            where z.ID == Convert.ToInt32(recordID.Text)
+                            select z;
+                if (zapis.ToList().ElementAt(0).name_1.ToString().Length > 0)
+                {
+                    uziStatus.ForeColor = System.Drawing.Color.Red;
+                    uziStatus.Text = "Запись уже занята";
+
+                }
+                else
+                {
+                    if (PhoneTB.Text.Length < 16)
+                    {
+                        uziStatus.ForeColor = System.Drawing.Color.Red;
+                        uziStatus.Text = "Неверно введен номер телефона";
+                    }
+                    else
+                    {
+                        try
+                        {
+                            string t = DoctorTimeLB3.SelectedValue;
+                            var address = from a in db.Uzi_Cities
+                                          where a.city == CityDL.SelectedValue.ToString()
+                                          where a.mo == MoDL.SelectedValue.ToString()
+                                          select a;
+                            string phone = PhoneTB.Text;
+                            phone = phone.Remove(13, 1);
+                            phone = phone.Remove(10, 1);
+                            phone = phone.Remove(5, 2);
+                            phone = phone.Remove(1, 1);
+                            Uzi_Zapisi editZapis = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text));
+                            editZapis.name_1 = FornameTB.Text;
+                            editZapis.name_2 = NameTB.Text;
+                            editZapis.name_3 = MiddlenameTB.Text;
+                            editZapis.phone = PhoneTB.Text;
+                            editZapis.age = AgeDL.SelectedValue;
+                            editZapis.sex = SexDL.SelectedValue;
+                            editZapis.mo = MoDL.SelectedValue;
+                            editZapis.city = CityDL.SelectedValue;
+                            editZapis.comment = CommentTB.Text;
+                            editZapis.services = TestLabel3.Text;
+                            editZapis.admin = Request.Cookies["Visitor"]["user"];
+                            int err = 0;
+                            var duration = (from o in db.Uzi_Doctor
+                                            where o.DOCTOR == DoctorRB2.Text
+                                            where o.TEST == TestLabel2.Text
+                                            select o);
+                            if (duration.ToList().ElementAt(0).DURATION.ToString() == "40" || duration.ToList().ElementAt(0).DURATION.ToString() == "30")
+                            {
+                                var zapis2 = from z in db.Uzi_Zapisi
+                                             where z.ID == Convert.ToInt32(recordID.Text) + 1
+                                             select z;
+                                if (zapis2.ToList().ElementAt(0).name_1.ToString().Length > 0 || zapis2.ToList().ElementAt(0).hidden.ToString() == "True")
+                                {
+                                    uziStatus.ForeColor = System.Drawing.Color.Red;
+                                    uziStatus.Text = "Невозможно записать! ";
+                                    err = 1;
+                                }
+                                else
+                                {
+                                    Uzi_Zapisi editZapis2 = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text) + 1);
+                                    editZapis2.name_1 = "Продолжение ID:" + recordID.Text;
+                                    db.SubmitChanges();
+                                }
+                            }
+                            if (duration.ToList().ElementAt(0).DURATION.ToString() == "60" || duration.ToList().ElementAt(0).DURATION.ToString() == "45")
+                            {
+                                var zapis2 = from z in db.Uzi_Zapisi
+                                             where z.ID == Convert.ToInt32(recordID.Text) + 1
+                                             select z;
+                                if (zapis2.ToList().ElementAt(0).name_1.ToString().Length > 0 || zapis2.ToList().ElementAt(0).hidden.ToString() == "True")
+                                {
+                                    uziStatus.ForeColor = System.Drawing.Color.Red;
+                                    uziStatus.Text = "Невозможно записать! ";
+                                    err = 1;
+                                }
+                                else
+                                {
+                                    var zapis3 = from z in db.Uzi_Zapisi
+                                                 where z.ID == Convert.ToInt32(recordID.Text) + 2
+                                                 select z;
+                                    if (zapis3.ToList().ElementAt(0).name_1.ToString().Length > 0 || zapis3.ToList().ElementAt(0).hidden.ToString() == "True")
+                                    {
+                                        uziStatus.ForeColor = System.Drawing.Color.Red;
+                                        uziStatus.Text = "Невозможно записать! ";
+                                        err = 1;
+                                    }
+                                    else
+                                    {
+                                        Uzi_Zapisi editZapis2 = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text) + 1);
+                                        editZapis2.name_1 = "Продолжение ID:" + recordID.Text;
+                                        db.SubmitChanges();
+                                        Uzi_Zapisi editZapis3 = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text) + 2);
+                                        editZapis3.name_1 = "Продолжение ID:" + recordID.Text;
+                                        db.SubmitChanges();
+                                    }
+                                }
+                            }
+
+                            if (err == 0)
+                            {
+                                db.SubmitChanges();
+                                RbUpdate();
+                                NameTB.Text = "";
+                                FornameTB.Text = "";
+                                MiddlenameTB.Text = "";
+                                PhoneTB.Text = "";
+                                DoctorTimeLB3.SelectedIndex = -1;
+                                TestLabel3.Text = "";
+                                TestLB3.Items.Clear();
+                                CommentTB.Text = "";
+                                AgeDL.SelectedIndex = 0;
+                                SexDL.SelectedIndex = 0;
+                                recordID.Text = "";
+                                toSend(phone: phone, message: "Запись УЗИ " + DateDL.SelectedValue + " в " + t + " по адресу " + CityDL.SelectedValue.ToString() + " " + address.ToList().ElementAt(0).address.ToString() + " т. 8-800-234-40-50");
+                            }
+                            else
+                            {
+                                uziStatus.ForeColor = System.Drawing.Color.Red;
+                                uziStatus.Text = "Ошибка";
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            uziStatus.ForeColor = System.Drawing.Color.Red;
+                            uziStatus.Text = ex.ToString();
+                        }
+                    }
+                }
+            }
+        }
+
+        if (DoctorRB4.Checked)
+        {
+            if (DoctorTimeLB4.SelectedIndex != -1)
+            {
+                var zapis = from z in db.Uzi_Zapisi
+                            where z.ID == Convert.ToInt32(recordID.Text)
+                            select z;
+                if (zapis.ToList().ElementAt(0).name_1.ToString().Length > 0)
+                {
+                    uziStatus.ForeColor = System.Drawing.Color.Red;
+                    uziStatus.Text = "Запись уже занята";
+
+                }
+                else
+                {
+                    if (PhoneTB.Text.Length < 16)
+                    {
+                        uziStatus.ForeColor = System.Drawing.Color.Red;
+                        uziStatus.Text = "Неверно введен номер телефона";
+                    }
+                    else
+                    {
+                        try
+                        {
+                            string t = DoctorTimeLB4.SelectedValue;
+                            var address = from a in db.Uzi_Cities
+                                          where a.city == CityDL.SelectedValue.ToString()
+                                          where a.mo == MoDL.SelectedValue.ToString()
+                                          select a;
+                            string phone = PhoneTB.Text;
+                            phone = phone.Remove(13, 1);
+                            phone = phone.Remove(10, 1);
+                            phone = phone.Remove(5, 2);
+                            phone = phone.Remove(1, 1);
+                            Uzi_Zapisi editZapis = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text));
+                            editZapis.name_1 = FornameTB.Text;
+                            editZapis.name_2 = NameTB.Text;
+                            editZapis.name_3 = MiddlenameTB.Text;
+                            editZapis.phone = PhoneTB.Text;
+                            editZapis.age = AgeDL.SelectedValue;
+                            editZapis.sex = SexDL.SelectedValue;
+                            editZapis.mo = MoDL.SelectedValue;
+                            editZapis.city = CityDL.SelectedValue;
+                            editZapis.comment = CommentTB.Text;
+                            editZapis.services = TestLabel4.Text;
+                            editZapis.admin = Request.Cookies["Visitor"]["user"];
+                            int err = 0;
+                            var duration = (from o in db.Uzi_Doctor
+                                            where o.DOCTOR == DoctorRB2.Text
+                                            where o.TEST == TestLabel2.Text
+                                            select o);
+                            if (duration.ToList().ElementAt(0).DURATION.ToString() == "40" || duration.ToList().ElementAt(0).DURATION.ToString() == "30")
+                            {
+                                var zapis2 = from z in db.Uzi_Zapisi
+                                             where z.ID == Convert.ToInt32(recordID.Text) + 1
+                                             select z;
+                                if (zapis2.ToList().ElementAt(0).name_1.ToString().Length > 0 || zapis2.ToList().ElementAt(0).hidden.ToString() == "True")
+                                {
+                                    uziStatus.ForeColor = System.Drawing.Color.Red;
+                                    uziStatus.Text = "Невозможно записать! ";
+                                    err = 1;
+                                }
+                                else
+                                {
+                                    Uzi_Zapisi editZapis2 = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text) + 1);
+                                    editZapis2.name_1 = "Продолжение ID:" + recordID.Text;
+                                    db.SubmitChanges();
+                                }
+                            }
+                            if (duration.ToList().ElementAt(0).DURATION.ToString() == "60" || duration.ToList().ElementAt(0).DURATION.ToString() == "45")
+                            {
+                                var zapis2 = from z in db.Uzi_Zapisi
+                                             where z.ID == Convert.ToInt32(recordID.Text) + 1
+                                             select z;
+                                if (zapis2.ToList().ElementAt(0).name_1.ToString().Length > 0 || zapis2.ToList().ElementAt(0).hidden.ToString() == "True")
+                                {
+                                    uziStatus.ForeColor = System.Drawing.Color.Red;
+                                    uziStatus.Text = "Невозможно записать! ";
+                                    err = 1;
+                                }
+                                else
+                                {
+                                    var zapis3 = from z in db.Uzi_Zapisi
+                                                 where z.ID == Convert.ToInt32(recordID.Text) + 2
+                                                 select z;
+                                    if (zapis3.ToList().ElementAt(0).name_1.ToString().Length > 0 || zapis3.ToList().ElementAt(0).hidden.ToString() == "True")
+                                    {
+                                        uziStatus.ForeColor = System.Drawing.Color.Red;
+                                        uziStatus.Text = "Невозможно записать! ";
+                                        err = 1;
+                                    }
+                                    else
+                                    {
+                                        Uzi_Zapisi editZapis2 = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text) + 1);
+                                        editZapis2.name_1 = "Продолжение ID:" + recordID.Text;
+                                        db.SubmitChanges();
+                                        Uzi_Zapisi editZapis3 = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text) + 2);
+                                        editZapis3.name_1 = "Продолжение ID:" + recordID.Text;
+                                        db.SubmitChanges();
+                                    }
+                                }
+                            }
+
+                            if (err == 0)
+                            {
+                                db.SubmitChanges();
+                                RbUpdate();
+                                NameTB.Text = "";
+                                FornameTB.Text = "";
+                                MiddlenameTB.Text = "";
+                                PhoneTB.Text = "";
+                                DoctorTimeLB4.SelectedIndex = -1;
+                                TestLabel4.Text = "";
+                                TestLB4.Items.Clear();
+                                CommentTB.Text = "";
+                                AgeDL.SelectedIndex = 0;
+                                SexDL.SelectedIndex = 0;
+                                recordID.Text = "";
+                                toSend(phone: phone, message: "Запись УЗИ " + DateDL.SelectedValue + " в " + t + " по адресу " + CityDL.SelectedValue.ToString() + " " + address.ToList().ElementAt(0).address.ToString() + " т. 8-800-234-40-50");
+                            }
+                            else
+                            {
+                                uziStatus.ForeColor = System.Drawing.Color.Red;
+                                uziStatus.Text = "Ошибка";
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            uziStatus.ForeColor = System.Drawing.Color.Red;
+                            uziStatus.Text = ex.ToString();
+                        }
+                    }
+                }
+            }
+        }
+
+        if (DoctorRB5.Checked)
+        {
+            if (DoctorTimeLB5.SelectedIndex != -1)
+            {
+                var zapis = from z in db.Uzi_Zapisi
+                            where z.ID == Convert.ToInt32(recordID.Text)
+                            select z;
+                if (zapis.ToList().ElementAt(0).name_1.ToString().Length > 0)
+                {
+                    uziStatus.ForeColor = System.Drawing.Color.Red;
+                    uziStatus.Text = "Запись уже занята";
+
+                }
+                else
+                {
+                    if (PhoneTB.Text.Length < 16)
+                    {
+                        uziStatus.ForeColor = System.Drawing.Color.Red;
+                        uziStatus.Text = "Неверно введен номер телефона";
+                    }
+                    else
+                    {
+                        try
+                        {
+                            string t = DoctorTimeLB5.SelectedValue;
+                            var address = from a in db.Uzi_Cities
+                                          where a.city == CityDL.SelectedValue.ToString()
+                                          where a.mo == MoDL.SelectedValue.ToString()
+                                          select a;
+                            string phone = PhoneTB.Text;
+                            phone = phone.Remove(13, 1);
+                            phone = phone.Remove(10, 1);
+                            phone = phone.Remove(5, 2);
+                            phone = phone.Remove(1, 1);
+                            Uzi_Zapisi editZapis = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text));
+                            editZapis.name_1 = FornameTB.Text;
+                            editZapis.name_2 = NameTB.Text;
+                            editZapis.name_3 = MiddlenameTB.Text;
+                            editZapis.phone = PhoneTB.Text;
+                            editZapis.age = AgeDL.SelectedValue;
+                            editZapis.sex = SexDL.SelectedValue;
+                            editZapis.mo = MoDL.SelectedValue;
+                            editZapis.city = CityDL.SelectedValue;
+                            editZapis.comment = CommentTB.Text;
+                            editZapis.services = TestLabel5.Text;
+                            editZapis.admin = Request.Cookies["Visitor"]["user"];
+                            int err = 0;
+                            var duration = (from o in db.Uzi_Doctor
+                                            where o.DOCTOR == DoctorRB2.Text
+                                            where o.TEST == TestLabel2.Text
+                                            select o);
+                            if (duration.ToList().ElementAt(0).DURATION.ToString() == "40" || duration.ToList().ElementAt(0).DURATION.ToString() == "30")
+                            {
+                                var zapis2 = from z in db.Uzi_Zapisi
+                                             where z.ID == Convert.ToInt32(recordID.Text) + 1
+                                             select z;
+                                if (zapis2.ToList().ElementAt(0).name_1.ToString().Length > 0 || zapis2.ToList().ElementAt(0).hidden.ToString() == "True")
+                                {
+                                    uziStatus.ForeColor = System.Drawing.Color.Red;
+                                    uziStatus.Text = "Невозможно записать! ";
+                                    err = 1;
+                                }
+                                else
+                                {
+                                    Uzi_Zapisi editZapis2 = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text) + 1);
+                                    editZapis2.name_1 = "Продолжение ID:" + recordID.Text;
+                                    db.SubmitChanges();
+                                }
+                            }
+                            if (duration.ToList().ElementAt(0).DURATION.ToString() == "60" || duration.ToList().ElementAt(0).DURATION.ToString() == "45")
+                            {
+                                var zapis2 = from z in db.Uzi_Zapisi
+                                             where z.ID == Convert.ToInt32(recordID.Text) + 1
+                                             select z;
+                                if (zapis2.ToList().ElementAt(0).name_1.ToString().Length > 0 || zapis2.ToList().ElementAt(0).hidden.ToString() == "True")
+                                {
+                                    uziStatus.ForeColor = System.Drawing.Color.Red;
+                                    uziStatus.Text = "Невозможно записать! ";
+                                    err = 1;
+                                }
+                                else
+                                {
+                                    var zapis3 = from z in db.Uzi_Zapisi
+                                                 where z.ID == Convert.ToInt32(recordID.Text) + 2
+                                                 select z;
+                                    if (zapis3.ToList().ElementAt(0).name_1.ToString().Length > 0 || zapis3.ToList().ElementAt(0).hidden.ToString() == "True")
+                                    {
+                                        uziStatus.ForeColor = System.Drawing.Color.Red;
+                                        uziStatus.Text = "Невозможно записать! ";
+                                        err = 1;
+                                    }
+                                    else
+                                    {
+                                        Uzi_Zapisi editZapis2 = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text) + 1);
+                                        editZapis2.name_1 = "Продолжение ID:" + recordID.Text;
+                                        db.SubmitChanges();
+                                        Uzi_Zapisi editZapis3 = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text) + 2);
+                                        editZapis3.name_1 = "Продолжение ID:" + recordID.Text;
+                                        db.SubmitChanges();
+                                    }
+                                }
+                            }
+
+                            if (err == 0)
+                            {
+                                db.SubmitChanges();
+                                RbUpdate();
+                                NameTB.Text = "";
+                                FornameTB.Text = "";
+                                MiddlenameTB.Text = "";
+                                PhoneTB.Text = "";
+                                DoctorTimeLB5.SelectedIndex = -1;
+                                TestLabel5.Text = "";
+                                TestLB5.Items.Clear();
+                                CommentTB.Text = "";
+                                AgeDL.SelectedIndex = 0;
+                                SexDL.SelectedIndex = 0;
+                                recordID.Text = "";
                                 toSend(phone: phone, message: "Запись УЗИ " + DateDL.SelectedValue + " в " + t + " по адресу " + CityDL.SelectedValue.ToString() + " " + address.ToList().ElementAt(0).address.ToString() + " т. 8-800-234-40-50");
                             }
                             else
@@ -1383,6 +1789,8 @@ public partial class Views_Uzi : System.Web.UI.Page
 
     protected void TestLB1_SelectedIndexChanged(object sender, EventArgs e)
     {
+        if (DoctorRB1.Checked)
+        {
         if (TestLB1.SelectedIndex != -1)
         {
             var test = TestLB1.SelectedItem.Text.Split('-');
@@ -1451,86 +1859,93 @@ public partial class Views_Uzi : System.Web.UI.Page
                 currentTest.Text = TestLB1.SelectedItem.Text;
             }
         }
+        }
+
     }
 
     protected void TestLB2_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (TestLB2.SelectedIndex != -1)
+        if (DoctorRB2.Checked)
         {
-            var test = TestLB2.SelectedItem.Text.Split('-');
-            string testCode = test[0];
-            var testprice = from o in db.Uzi_Price
-                            where o.test == testCode
-                            select o;
-            if (CityDL.Text == "Новосибирск")
+            if (TestLB2.SelectedIndex != -1)
             {
-                priceLabel.Text = testprice.ToList().ElementAt(0).nsk_price.ToString();
-                PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
-                var docDur = (from o in db.Uzi_Doctor
-                              where o.DOCTOR == DoctorRB2.Text
-                              where o.TEST == testCode
-                              where o.MO == MoDL.SelectedValue.ToString()
-                              select o);
-                durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
-                currentTest.Text = TestLB2.SelectedItem.Text;
-            }
-            else if (CityDL.Text == "Красноярск")
-            {
-                priceLabel.Text = testprice.ToList().ElementAt(0).krs_price.ToString();
-                PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
-                var docDur = (from o in db.Uzi_Doctor
-                              where o.DOCTOR == DoctorRB2.Text
-                              where o.TEST == testCode
-                              where o.MO == MoDL.SelectedValue.ToString()
-                              select o);
-                durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
-                currentTest.Text = TestLB2.SelectedItem.Text;
+                var test = TestLB2.SelectedItem.Text.Split('-');
+                string testCode = test[0];
+                var testprice = from o in db.Uzi_Price
+                                where o.test == testCode
+                                select o;
+                if (CityDL.Text == "Новосибирск")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).nsk_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB2.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB2.SelectedItem.Text;
+                }
+                else if (CityDL.Text == "Красноярск")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).krs_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB2.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB2.SelectedItem.Text;
 
-            }
-            else if (CityDL.Text == "Томск")
-            {
-                priceLabel.Text = testprice.ToList().ElementAt(0).tomsk_price.ToString();
-                PrepTB.Text = testprice.ToList().ElementAt(0).tomsk_prep.ToString();
-                var docDur = (from o in db.Uzi_Doctor
-                              where o.DOCTOR == DoctorRB2.Text
-                              where o.TEST == testCode
-                              where o.MO == MoDL.SelectedValue.ToString()
-                              select o);
-                durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
-                currentTest.Text = TestLB2.SelectedItem.Text;
+                }
+                else if (CityDL.Text == "Томск")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).tomsk_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).tomsk_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB2.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB2.SelectedItem.Text;
 
-            }
-            else if (CityDL.Text == "Омск")
-            {
-                priceLabel.Text = testprice.ToList().ElementAt(0).omsk_price.ToString();
-                PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
-                var docDur = (from o in db.Uzi_Doctor
-                              where o.DOCTOR == DoctorRB2.Text
-                              where o.TEST == testCode
-                              where o.MO == MoDL.SelectedValue.ToString()
-                              select o);
-                durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
-                currentTest.Text = TestLB2.SelectedItem.Text;
+                }
+                else if (CityDL.Text == "Омск")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).omsk_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB2.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB2.SelectedItem.Text;
 
-            }
-            else if (CityDL.Text == "Иркутск")
-            {
-                priceLabel.Text = testprice.ToList().ElementAt(0).irk_price.ToString();
-                PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
-                var docDur = (from o in db.Uzi_Doctor
-                              where o.DOCTOR == DoctorRB2.Text
-                              where o.TEST == testCode
-                              where o.MO == MoDL.SelectedValue.ToString()
-                              select o);
-                durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
-                currentTest.Text = TestLB2.SelectedItem.Text;
+                }
+                else if (CityDL.Text == "Иркутск")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).irk_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB2.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB2.SelectedItem.Text;
 
+                }
             }
         }
     }
 
     protected void TestLB3_SelectedIndexChanged(object sender, EventArgs e)
     {
+        if (DoctorRB3.Checked)
+        {
         if (TestLB3.SelectedIndex != -1)
         {
             var test = TestLB3.SelectedItem.Text.Split('-');
@@ -1604,153 +2019,160 @@ public partial class Views_Uzi : System.Web.UI.Page
 
             }
         }
+        }
     }
 
     protected void TestLB4_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (TestLB4.SelectedIndex != -1)
+        if (DoctorRB4.Checked)
         {
-            var test = TestLB4.SelectedItem.Text.Split('-');
-            string testCode = test[0];
-            var testprice = from o in db.Uzi_Price
-                            where o.test == testCode
-                            select o;
-            if (CityDL.Text == "Новосибирск")
+            if (TestLB4.SelectedIndex != -1)
             {
-                priceLabel.Text = testprice.ToList().ElementAt(0).nsk_price.ToString();
-                PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
-                var docDur = (from o in db.Uzi_Doctor
-                              where o.DOCTOR == DoctorRB4.Text
-                              where o.TEST == testCode
-                              where o.MO == MoDL.SelectedValue.ToString()
-                              select o);
-                durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
-                currentTest.Text = TestLB4.SelectedItem.Text;
+                var test = TestLB4.SelectedItem.Text.Split('-');
+                string testCode = test[0];
+                var testprice = from o in db.Uzi_Price
+                                where o.test == testCode
+                                select o;
+                if (CityDL.Text == "Новосибирск")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).nsk_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB4.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB4.SelectedItem.Text;
 
-            }
-            else if (CityDL.Text == "Красноярск")
-            {
-                priceLabel.Text = testprice.ToList().ElementAt(0).krs_price.ToString();
-                PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
-                var docDur = (from o in db.Uzi_Doctor
-                              where o.DOCTOR == DoctorRB4.Text
-                              where o.TEST == testCode
-                              where o.MO == MoDL.SelectedValue.ToString()
-                              select o);
-                durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
-                currentTest.Text = TestLB4.SelectedItem.Text;
-            }
-            else if (CityDL.Text == "Томск")
-            {
-                priceLabel.Text = testprice.ToList().ElementAt(0).tomsk_price.ToString();
-                PrepTB.Text = testprice.ToList().ElementAt(0).tomsk_prep.ToString();
-                var docDur = (from o in db.Uzi_Doctor
-                              where o.DOCTOR == DoctorRB4.Text
-                              where o.TEST == testCode
-                              where o.MO == MoDL.SelectedValue.ToString()
-                              select o);
-                durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
-                currentTest.Text = TestLB4.SelectedItem.Text;
-            }
-            else if (CityDL.Text == "Омск")
-            {
-                priceLabel.Text = testprice.ToList().ElementAt(0).omsk_price.ToString();
-                PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
-                var docDur = (from o in db.Uzi_Doctor
-                              where o.DOCTOR == DoctorRB4.Text
-                              where o.TEST == testCode
-                              where o.MO == MoDL.SelectedValue.ToString()
-                              select o);
-                durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
-                currentTest.Text = TestLB4.SelectedItem.Text;
-            }
-            else if (CityDL.Text == "Иркутск")
-            {
-                priceLabel.Text = testprice.ToList().ElementAt(0).irk_price.ToString();
-                PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
-                var docDur = (from o in db.Uzi_Doctor
-                              where o.DOCTOR == DoctorRB4.Text
-                              where o.TEST == testCode
-                              where o.MO == MoDL.SelectedValue.ToString()
-                              select o);
-                durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
-                currentTest.Text = TestLB4.SelectedItem.Text;
+                }
+                else if (CityDL.Text == "Красноярск")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).krs_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB4.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB4.SelectedItem.Text;
+                }
+                else if (CityDL.Text == "Томск")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).tomsk_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).tomsk_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB4.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB4.SelectedItem.Text;
+                }
+                else if (CityDL.Text == "Омск")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).omsk_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB4.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB4.SelectedItem.Text;
+                }
+                else if (CityDL.Text == "Иркутск")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).irk_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB4.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB4.SelectedItem.Text;
+                }
             }
         }
     }
 
     protected void TestLB5_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (TestLB5.SelectedIndex != -1)
+        if (DoctorRB5.Checked)
         {
-            var test = TestLB5.SelectedItem.Text.Split('-');
-            string testCode = test[0];
-            var testprice = from o in db.Uzi_Price
-                            where o.test == testCode
-                            select o;
-            if (CityDL.Text == "Новосибирск")
+            if (TestLB5.SelectedIndex != -1)
             {
-                priceLabel.Text = testprice.ToList().ElementAt(0).nsk_price.ToString();
-                PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
-                var docDur = (from o in db.Uzi_Doctor
-                              where o.DOCTOR == DoctorRB5.Text
-                              where o.TEST == testCode
-                              where o.MO == MoDL.SelectedValue.ToString()
-                              select o);
-                durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
-                currentTest.Text = TestLB5.SelectedItem.Text;
-            }
-            else if (CityDL.Text == "Красноярск")
-            {
-                priceLabel.Text = testprice.ToList().ElementAt(0).krs_price.ToString();
-                PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
-                var docDur = (from o in db.Uzi_Doctor
-                              where o.DOCTOR == DoctorRB5.Text
-                              where o.TEST == testCode
-                              where o.MO == MoDL.SelectedValue.ToString()
-                              select o);
-                durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
-                currentTest.Text = TestLB5.SelectedItem.Text;
+                var test = TestLB5.SelectedItem.Text.Split('-');
+                string testCode = test[0];
+                var testprice = from o in db.Uzi_Price
+                                where o.test == testCode
+                                select o;
+                if (CityDL.Text == "Новосибирск")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).nsk_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB5.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB5.SelectedItem.Text;
+                }
+                else if (CityDL.Text == "Красноярск")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).krs_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB5.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB5.SelectedItem.Text;
 
-            }
-            else if (CityDL.Text == "Томск")
-            {
-                priceLabel.Text = testprice.ToList().ElementAt(0).tomsk_price.ToString();
-                PrepTB.Text = testprice.ToList().ElementAt(0).tomsk_prep.ToString();
-                var docDur = (from o in db.Uzi_Doctor
-                              where o.DOCTOR == DoctorRB5.Text
-                              where o.TEST == testCode
-                              where o.MO == MoDL.SelectedValue.ToString()
-                              select o);
-                durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
-                currentTest.Text = TestLB5.SelectedItem.Text;
+                }
+                else if (CityDL.Text == "Томск")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).tomsk_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).tomsk_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB5.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB5.SelectedItem.Text;
 
-            }
-            else if (CityDL.Text == "Омск")
-            {
-                priceLabel.Text = testprice.ToList().ElementAt(0).omsk_price.ToString();
-                PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
-                var docDur = (from o in db.Uzi_Doctor
-                              where o.DOCTOR == DoctorRB5.Text
-                              where o.TEST == testCode
-                              where o.MO == MoDL.SelectedValue.ToString()
-                              select o);
-                durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
-                currentTest.Text = TestLB5.SelectedItem.Text;
+                }
+                else if (CityDL.Text == "Омск")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).omsk_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB5.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB5.SelectedItem.Text;
 
-            }
-            else if (CityDL.Text == "Иркутск")
-            {
-                priceLabel.Text = testprice.ToList().ElementAt(0).irk_price.ToString();
-                PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
-                var docDur = (from o in db.Uzi_Doctor
-                              where o.DOCTOR == DoctorRB5.Text
-                              where o.TEST == testCode
-                              where o.MO == MoDL.SelectedValue.ToString()
-                              select o);
-                durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
-                currentTest.Text = TestLB5.SelectedItem.Text;
+                }
+                else if (CityDL.Text == "Иркутск")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).irk_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB5.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB5.SelectedItem.Text;
 
+                }
             }
         }
     }

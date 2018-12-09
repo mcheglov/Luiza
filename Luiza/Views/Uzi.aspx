@@ -261,7 +261,7 @@
                                     </div>
                                 </div>
                                 <div style="position: absolute; bottom: 120px; right: 0px; left: 0px; height: 120px; padding: 4px; text-align: center;">
-                                    <asp:ListBox ID="TestLB2" runat="server" Height="100%" Width="100%" CssClass="form-control" Font-Size="Small" OnSelectedIndexChanged="TestLB2_SelectedIndexChanged"></asp:ListBox>
+                                    <asp:ListBox ID="TestLB2" runat="server" Height="100%" Width="100%" CssClass="form-control" Font-Size="Small" OnSelectedIndexChanged="TestLB2_SelectedIndexChanged" AutoPostBack="True"></asp:ListBox>
                                 </div>
                                 <div style="position: absolute; bottom: 90px; right: 0px; left: 0px; height: 30px; padding: 2px 4px 2px 4px; text-align: center;">
                                     <button type="button" class="BtnMain" data-toggle="modal" data-target="#exampleModal" data-backdrop="false" style="width: 100%; background-color: #FF6A13; height: 100%;">
