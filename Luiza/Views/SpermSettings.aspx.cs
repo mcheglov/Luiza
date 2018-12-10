@@ -94,7 +94,7 @@ public partial class Views_SpermSettings : System.Web.UI.Page
                     {
                         start = start.Add(ts);
                     }
-                    vs.Add(start.ToLongDateString());
+                    vs.Add(start.ToLongTimeString());
                     sz.name_1 = "";
                     sz.name_2 = "";
                     sz.name_3 = "";
