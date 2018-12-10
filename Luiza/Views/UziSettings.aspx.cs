@@ -65,7 +65,11 @@ public partial class Views_UziSettings : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        priem(doctorStart.Text, doctorEnd.Text, 20, uziCity.SelectedValue, uziDate.Text, uziMo.SelectedValue, uziDoctor.SelectedValue);
+        var dur = from o in db.Uzi_Cities
+                  where o.city == uziCity.SelectedValue
+                  where o.mo == uziMo.SelectedValue
+                  select o;
+        priem(doctorStart.Text, doctorEnd.Text, Convert.ToInt16(dur.ToList().ElementAt(0).duration.ToString()), uziCity.SelectedValue, uziDate.Text, uziMo.SelectedValue, uziDoctor.SelectedValue);
     }
 
     protected void Button2_Click(object sender, EventArgs e)
