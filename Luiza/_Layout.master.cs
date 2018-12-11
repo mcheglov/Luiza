@@ -58,4 +58,16 @@ public partial class _Layout : System.Web.UI.MasterPage
             Response.Redirect("/Views/Uzi.aspx?param1=0");
         }
     }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        if (rights == "Admin")
+        {
+            Response.Redirect("/Views/Settings.aspx?param1=1");
+        }
+        else
+        {
+            Response.Redirect("/Views/Settings.aspx?param1=0");
+        }
+    }
 }

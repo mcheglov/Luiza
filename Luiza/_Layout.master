@@ -26,7 +26,8 @@
             <div id="head" style="top: 10px; right: 10px; left: 10px; position: fixed; background-image: url('/Images/logo.png'); background-repeat: no-repeat; height: 50px;" class="head">
                 <div id="exit" class="auto-style1" dir="ltr">
                     <asp:Label ID="userLabel" runat="server" Text="Вы вошли как:"></asp:Label>
-                    &nbsp;<asp:Button ID="Button1" runat="server" Text="Выйти" CssClass="exitBtn" OnClick="Button1_Click" />
+                    &nbsp;<asp:Button ID="Button2" runat="server" Text="Настройки" CssClass="yesBtn" OnClick="Button2_Click" Width="100px" />
+                &nbsp;<asp:Button ID="Button1" runat="server" Text="Выйти" CssClass="exitBtn" OnClick="Button1_Click" />
                 </div>
             </div>
             <div id="menuBorder" style="height: 40px; top: 65px; right: 10px; left: 10px; position: fixed; border-radius: 5px 5px 5px 5px; border: 2px solid #0097A9">
