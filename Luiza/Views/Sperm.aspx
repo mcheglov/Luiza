@@ -16,40 +16,40 @@
                 Город
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:DropDownList ID="CityDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" OnSelectedIndexChanged="CityDL_SelectedIndexChanged">
+                <asp:DropDownList ID="CityDL" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" OnSelectedIndexChanged="CityDL_SelectedIndexChanged">
                 </asp:DropDownList>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 МО
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:DropDownList ID="MoDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" OnSelectedIndexChanged="MoDL_SelectedIndexChanged">
+                <asp:DropDownList ID="MoDL" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" OnSelectedIndexChanged="MoDL_SelectedIndexChanged">
                 </asp:DropDownList>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 Дата
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:DropDownList ID="DateDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" OnSelectedIndexChanged="DateDL_SelectedIndexChanged">
+                <asp:DropDownList ID="DateDL" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" OnSelectedIndexChanged="DateDL_SelectedIndexChanged">
                 </asp:DropDownList>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 Фамилия
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:TextBox ID="FornameTB" class="form-control item" runat="server" TextMode="Search" Width="100%" Font-Size="Small"></asp:TextBox>
+                <asp:TextBox ID="FornameTB" runat="server" TextMode="Search" Width="100%" Font-Size="Small"></asp:TextBox>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 Имя
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:TextBox ID="NameTB" class="form-control item" runat="server" TextMode="Search" Width="100%" Font-Size="Small"></asp:TextBox>
+                <asp:TextBox ID="NameTB" runat="server" TextMode="Search" Width="100%" Font-Size="Small"></asp:TextBox>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 Отчество
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:TextBox ID="MiddlenameTB" class="form-control item" runat="server" TextMode="Search" Width="100%" Font-Size="Small"></asp:TextBox>
+                <asp:TextBox ID="MiddlenameTB" runat="server" TextMode="Search" Width="100%" Font-Size="Small"></asp:TextBox>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 Телефон
@@ -62,13 +62,13 @@
                         phone.focus();
                     });
                 </script>
-                <asp:TextBox ID="PhoneTB" class="form-control masked" runat="server" TextMode="Search" Width="100%" Font-Size="Small" onkeypress="OnlyNumeric();" MaxLength="16" AutoPostBack="True"></asp:TextBox>
+                <asp:TextBox ID="PhoneTB" class="masked" runat="server" TextMode="Search" Width="100%" Font-Size="Small" onkeypress="OnlyNumeric();" MaxLength="16" AutoPostBack="True"></asp:TextBox>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 Услуга
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:DropDownList ID="TestDL" class="form-control item" runat="server" Width="100%" DataSourceID="TestDS" DataTextField="Test_code" DataValueField="Test_code" Font-Size="Small">
+                <asp:DropDownList ID="TestDL" runat="server" Width="100%" DataSourceID="TestDS" DataTextField="Test_code" DataValueField="Test_code" Font-Size="Small">
                 </asp:DropDownList>
                 <asp:LinqDataSource ID="TestDS" runat="server" ContextTypeName="toSQLDataContext" EntityTypeName="" Select="new (Test_code)" TableName="Sperm_Price" Where="Test_city == @Test_city &amp;&amp; Test_mo == @Test_mo">
                     <WhereParameters>
