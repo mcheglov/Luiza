@@ -87,6 +87,11 @@ public partial class Views_Uzi : System.Web.UI.Page
         DoctorRB3.Text = "";
         DoctorRB4.Text = "";
         DoctorRB5.Text = "";
+        TestLB1.Items.Clear();
+        TestLB2.Items.Clear();
+        TestLB3.Items.Clear();
+        TestLB4.Items.Clear();
+        TestLB5.Items.Clear();
         uziStatus.Text = "";
         if (docs.Count() == 0)
         {
