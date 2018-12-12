@@ -30,7 +30,7 @@
                 &nbsp;<asp:Button ID="Button1" runat="server" Text="Выйти" CssClass="exitBtn" OnClick="Button1_Click" />
                 </div>
             </div>
-            <div id="menuBorder" style="height: 40px; top: 65px; right: 10px; left: 10px; position: fixed; border-radius: 5px 5px 5px 5px; border: 2px solid #0097A9">
+            <div id="menuBorder" style="height: 40px; top: 65px; right: 10px; left: 10px; position: fixed; border-radius: 5px 5px 5px 5px; border: 1px solid #0097A9">
                 <div id="menu" class="menu">
                     <asp:Button class="menuBtnLeft" Text="Главная Страница" runat="server"></asp:Button>
                     <asp:Button class="menuBtn" Text="УЗИ" runat="server" ID="UziBT" OnClick="UziBT_Click"></asp:Button>
@@ -40,7 +40,7 @@
                     <asp:Button class="menuBtnRight" Text="Кальпоскопия" runat="server"></asp:Button>
                 </div>
             </div>
-            <div style="position: fixed; border-radius: 5px 5px 5px 5px; border: 2px solid #0097A9; top: 119px; right: 10px; left: 10px; bottom: 10px;">
+            <div style="position: fixed; border-radius: 5px 5px 5px 5px; border: 1px solid #0097A9; top: 119px; right: 10px; left: 10px; bottom: 10px;">
                 <div id="content" class="content" style="position: absolute; top: 5px; right: 5px; bottom: 5px; left: 5px">
                     <asp:ContentPlaceHolder ID="Content" runat="server">
                     </asp:ContentPlaceHolder>

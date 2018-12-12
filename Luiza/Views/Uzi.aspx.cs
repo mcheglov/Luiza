@@ -16,13 +16,11 @@ public partial class Views_Uzi : System.Web.UI.Page
 
         if (Request.QueryString["param1"] == "1")
         {
-            SettingsBT.Visible = true;
-            DoctorBT.Visible = true;
+            adminMenu.Visible = true;
         }
         else
         {
-            SettingsBT.Visible = false;
-            DoctorBT.Visible = false;
+            adminMenu.Visible = false;
         }
         if (!IsPostBack)
         {

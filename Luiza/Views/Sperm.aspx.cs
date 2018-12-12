@@ -16,12 +16,12 @@ public partial class Views_Sperm : System.Web.UI.Page
         if (Request.QueryString["param1"] == "1")
         {
             dayRemoverBT.Visible = true;
-            SettingsBT.Visible = true;
+            adminMenu.Visible = true;
         }
         else
         {
             dayRemoverBT.Visible = false;
-            SettingsBT.Visible = false;
+            adminMenu.Visible = false;
         }
         if (CityDL.Items.Count == 0)
         {

@@ -11,6 +11,21 @@
         <div style="position: absolute; width: 200px; top: 0px; bottom: 0px; left: 0px">
             <div style="text-align: center; padding: 2px">
                 <asp:Label ID="Label1" runat="server" Text="Спермограмма" Font-Size="X-Large" ForeColor="#FF6A13"></asp:Label>
+                <br />
+                <asp:Menu ID="adminMenu" runat="server" StaticSubMenuIndent="10px" Visible="False" BackColor="#0097A9" DynamicHorizontalOffset="2" Font-Names="Tahoma" ForeColor="White">
+                    <DynamicHoverStyle BackColor="#FF6A13" ForeColor="White" />
+                    <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                    <DynamicMenuStyle BackColor="#0097A9" />
+                    <DynamicSelectedStyle BackColor="#FF6A13" />
+                    <Items>
+                        <asp:MenuItem Text="Администрирование" Value="Администрирование">
+                            <asp:MenuItem NavigateUrl="~/Views/SpermSettings.aspx" Text="Расписание" Value="Расписание"></asp:MenuItem>
+                        </asp:MenuItem>
+                    </Items>
+                    <StaticHoverStyle BackColor="#FF6A13" ForeColor="White" />
+                    <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                    <StaticSelectedStyle BackColor="#0097A9" />
+                </asp:Menu>
             </div>
             <div style="margin-bottom: 2px; padding-top: 2px; padding-right: 2px; padding-left: 2px;">
                 Город
@@ -128,9 +143,6 @@
             &nbsp;
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px; text-align: center;">
                 <asp:Label ID="spermStatus" runat="server" ForeColor="Red"></asp:Label>
-            </div>
-            <div id="settings" runat="server" class="settings" style="position: fixed; height: 30px; left: 450px; width: 200px; text-align: center; top: 20px;">
-                <asp:Button ID="SettingsBT" runat="server" CssClass="Btn" Text="Настройки" Width="140px" OnClick="SettingsBT_Click" />
             </div>
 
         </div>

@@ -11,51 +11,67 @@
         <div style="position: absolute; width: 200px; top: 0px; bottom: 0px; left: 0px">
             <div style="text-align: center; padding: 2px">
                 <asp:Label ID="Label1" runat="server" Text="УЗИ" Font-Size="X-Large" ForeColor="#FF6A13"></asp:Label>
+                <br />
+                <asp:Menu ID="adminMenu" runat="server" StaticSubMenuIndent="10px" Visible="False" BackColor="#0097A9" DynamicHorizontalOffset="2" Font-Names="Tahoma" ForeColor="White">
+                    <DynamicHoverStyle BackColor="#FF6A13" ForeColor="White" />
+                    <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                    <DynamicMenuStyle BackColor="#0097A9" />
+                    <DynamicSelectedStyle BackColor="#FF6A13" />
+                    <Items>
+                        <asp:MenuItem Text="Администрирование" Value="Администрирование">
+                            <asp:MenuItem NavigateUrl="~/Views/UziSettings.aspx" Text="Расписание" Value="Расписание"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Views/UziAddDoctor.aspx" Text="Добавление врача" Value="Добавление врача"></asp:MenuItem>
+                        </asp:MenuItem>
+                    </Items>
+                    <StaticHoverStyle BackColor="#FF6A13" ForeColor="White" />
+                    <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                    <StaticSelectedStyle BackColor="#0097A9" />
+                </asp:Menu>
             </div>
             <div style="margin-bottom: 2px; padding-top: 2px; padding-right: 2px; padding-left: 2px;">
                 Город
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:DropDownList ID="CityDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" Height="30px" OnSelectedIndexChanged="CityDL_SelectedIndexChanged">
+                <asp:DropDownList ID="CityDL" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" OnSelectedIndexChanged="CityDL_SelectedIndexChanged">
                 </asp:DropDownList>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 МО
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:DropDownList ID="MoDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" Height="30px" OnSelectedIndexChanged="MoDL_SelectedIndexChanged">
+                <asp:DropDownList ID="MoDL" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" OnSelectedIndexChanged="MoDL_SelectedIndexChanged">
                 </asp:DropDownList>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 Дата
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:DropDownList ID="DateDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" Height="30px" OnSelectedIndexChanged="DateDL_SelectedIndexChanged">
+                <asp:DropDownList ID="DateDL" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" OnSelectedIndexChanged="DateDL_SelectedIndexChanged">
                 </asp:DropDownList>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 Фамилия
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:TextBox ID="FornameTB" class="form-control item" runat="server" TextMode="Search" Width="100%" Font-Size="Small" Height="20px"></asp:TextBox>
+                <asp:TextBox ID="FornameTB" runat="server" TextMode="Search" Width="100%" Font-Size="Small" Height="20px"></asp:TextBox>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 Имя
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:TextBox ID="NameTB" class="form-control item" runat="server" TextMode="Search" Width="100%" Font-Size="Small" Height="20px"></asp:TextBox>
+                <asp:TextBox ID="NameTB" runat="server" TextMode="Search" Width="100%" Font-Size="Small" Height="20px"></asp:TextBox>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 Отчество
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:TextBox ID="MiddlenameTB" class="form-control item" runat="server" TextMode="Search" Width="100%" Font-Size="Small" Height="20px" OnTextChanged="MiddlenameTB_TextChanged"></asp:TextBox>
+                <asp:TextBox ID="MiddlenameTB" runat="server" TextMode="Search" Width="100%" Font-Size="Small" Height="20px" OnTextChanged="MiddlenameTB_TextChanged"></asp:TextBox>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 Возраст
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:DropDownList ID="AgeDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" Height="30px" OnSelectedIndexChanged="AgeDL_SelectedIndexChanged">
+                <asp:DropDownList ID="AgeDL" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" OnSelectedIndexChanged="AgeDL_SelectedIndexChanged">
                     <asp:ListItem>До 1 года (0-11 месяцев)</asp:ListItem>
                     <asp:ListItem>1-2 года</asp:ListItem>
                     <asp:ListItem>3-7 лет</asp:ListItem>
@@ -73,7 +89,7 @@
                 Пол
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:DropDownList ID="SexDL" class="form-control item" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" Height="30px" OnSelectedIndexChanged="SexDL_SelectedIndexChanged">
+                <asp:DropDownList ID="SexDL" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" OnSelectedIndexChanged="SexDL_SelectedIndexChanged">
                     <asp:ListItem>Мужской</asp:ListItem>
                     <asp:ListItem>Женский</asp:ListItem>
                 </asp:DropDownList>
@@ -88,13 +104,13 @@
                         phone.focus();
                     });
                 </script>
-                <asp:TextBox ID="PhoneTB" class="form-control masked" runat="server" TextMode="Search" Width="100%" Font-Size="Small" onkeypress="OnlyNumeric();" MaxLength="16" AutoPostBack="True" Height="20px"></asp:TextBox>
+                <asp:TextBox ID="PhoneTB" class="masked" runat="server" TextMode="Search" Width="100%" Font-Size="Small" onkeypress="OnlyNumeric();" MaxLength="16" AutoPostBack="True" Height="20px"></asp:TextBox>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
                 Комментарий
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:TextBox ID="CommentTB" class="form-control item" runat="server" TextMode="MultiLine" Width="100%" Font-Size="Small" Height="100px"></asp:TextBox>
+                <asp:TextBox ID="CommentTB" runat="server" TextMode="MultiLine" Width="100%" Font-Size="Small" Height="100px"></asp:TextBox>
             </div>
             <div>
                 <br />
@@ -181,10 +197,6 @@
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px; text-align: center;">
                 <asp:Label ID="uziStatus" runat="server" ForeColor="Red"></asp:Label>
-            </div>
-            <div id="settings" runat="server" class="settings" style="position: fixed; height: 30px; left: 450px; width: 400px; text-align: left; top: 20px;">
-                <asp:Button ID="SettingsBT" runat="server" CssClass="Btn" Text="Расписание" Width="49%" OnClick="SettingsBT_Click" Visible="False" />
-            &nbsp;<asp:Button ID="DoctorBT" runat="server" CssClass="Btn" Text="Добавить доктора" Width="49%" OnClick="DoctorBT_Click" Visible="False" />
             </div>
 
         </div>
