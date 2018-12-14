@@ -131,7 +131,7 @@
                                     <div style="margin: 3px; padding: 2px; border: 1px solid #FF6A13; border-radius: 5px; width: 32%; height: 100px; position: relative; float: left;">
                                         <asp:Label ID="Label2" runat="server" Text="Ограничения" Height="20px"></asp:Label>
                                         <br />
-                                        <asp:Label ID="restrictionLabel" runat="server" Text="Ограничения" Height="20px" ForeColor="Red"></asp:Label>
+                                        <asp:Label ID="restrictionLabel" runat="server" Text="Ограничения" Height="20px" ForeColor="Red" Font-Size="XX-Small"></asp:Label>
                                     </div>
                                     <div style="margin: 3px; padding: 2px; border: 1px solid #FF6A13; border-radius: 5px; width: 32%; height: 100px; position: relative; float: left;">
                                         <asp:Label ID="Label3" runat="server" Text="Длительность" Height="20px"></asp:Label>
@@ -163,33 +163,8 @@
             </div>
             <div style="text-align: center; width: 200px; bottom: 0px; left: 0px; position: absolute;">
                 <div style="padding: 2px">
-                    <asp:Button ID="ChangeBT" runat="server" CssClass="Btn" Text="Перенести запись" Width="100%" Height="30px" Font-Size="Medium" /><br />
-                </div>
-                <div style="padding: 2px">
-                    <button type="button" id="delBT" runat="server" class="noBtn" data-toggle="modal" data-target="#delRecord" data-backdrop="false" style="width: 100%; height: 30px; font-size: medium; background-color: #FF6A13;">
-                        Удалить запись</button>
-                    <div class="modal fade" id="delRecord" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="delRecordLabel" style="color: #FF6A13;">Освободить время</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body" style="text-align: left;">
-                                    Вы уверены, что хотите освободить текущее время?
-                                </div>
-                                <div class="modal-footer" style="text-align: center;">
-                                    <asp:Button ID="YesDelBT" runat="server" Text="Да" CssClass="yesBtn" OnClick="YesDelBT_Click" />
-                                    <asp:Button ID="NoBT" runat="server" Text="Нет" CssClass="noBtn" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="padding: 2px">
-                    <asp:Button ID="ConfirmBT" runat="server" CssClass="yesBtn" Text="Подтвердить запись" Width="100%" Height="30px" Font-Size="Medium" OnClick="ConfirmBT_Click" /><br />
+                    <asp:Button ID="ChangeBT" runat="server" CssClass="Btn" Text="Редактировать" Width="100%" Height="30px" Font-Size="Medium" OnClick="ChangeBT_Click" />
+                    <br />
                 </div>
                 <div style="padding: 2px">
                     <asp:Button ID="SubmitBT" runat="server" CssClass="Btn" Text="ЗАПИСАТЬ" Width="100%" Height="30px" Font-Size="Large" OnClick="SubmitBT_Click" />

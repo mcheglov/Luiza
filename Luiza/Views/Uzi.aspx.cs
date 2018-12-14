@@ -25,9 +25,7 @@ public partial class Views_Uzi : System.Web.UI.Page
         if (!IsPostBack)
         {
 
-            delBT.Visible = false;
             ChangeBT.Visible = false;
-            ConfirmBT.Visible = false;
             SubmitBT.Text = "ЗАПИСАТЬ";
             if (CityDL.Items.Count == 0)
             {
@@ -1497,17 +1495,13 @@ public partial class Views_Uzi : System.Web.UI.Page
             if (DoctorTimeLB1.SelectedValue.Contains(" - "))
             {
                 SubmitBT.Visible = false;
-                delBT.Visible = true;
                 ChangeBT.Visible = true;
-                ConfirmBT.Visible = true;
 
             }
             else
             {
                 SubmitBT.Visible = true;
-                delBT.Visible = false;
                 ChangeBT.Visible = false;
-                ConfirmBT.Visible = false;
             }
             for (int i = 0; i < DoctorTimeLB1.Items.Count; i++)
             {
@@ -1543,17 +1537,13 @@ public partial class Views_Uzi : System.Web.UI.Page
             if (DoctorTimeLB2.SelectedValue.Contains(" - "))
             {
                 SubmitBT.Visible = false;
-                delBT.Visible = true;
                 ChangeBT.Visible = true;
-                ConfirmBT.Visible = true;
 
             }
             else
             {
                 SubmitBT.Visible = true;
-                delBT.Visible = false;
                 ChangeBT.Visible = false;
-                ConfirmBT.Visible = false;
             }
             for (int i = 0; i < DoctorTimeLB2.Items.Count; i++)
             {
@@ -1589,17 +1579,13 @@ public partial class Views_Uzi : System.Web.UI.Page
             if (DoctorTimeLB3.SelectedValue.Contains(" - "))
             {
                 SubmitBT.Visible = false;
-                delBT.Visible = true;
                 ChangeBT.Visible = true;
-                ConfirmBT.Visible = true;
 
             }
             else
             {
                 SubmitBT.Visible = true;
-                delBT.Visible = false;
                 ChangeBT.Visible = false;
-                ConfirmBT.Visible = false;
             }
             for (int i = 0; i < DoctorTimeLB3.Items.Count; i++)
             {
@@ -1635,17 +1621,12 @@ public partial class Views_Uzi : System.Web.UI.Page
             if (DoctorTimeLB4.SelectedValue.Contains(" - "))
             {
                 SubmitBT.Visible = false;
-                delBT.Visible = true;
                 ChangeBT.Visible = true;
-                ConfirmBT.Visible = true;
-
             }
             else
             {
                 SubmitBT.Visible = true;
-                delBT.Visible = false;
                 ChangeBT.Visible = false;
-                ConfirmBT.Visible = false;
             }
             for (int i = 0; i < DoctorTimeLB4.Items.Count; i++)
             {
@@ -1681,17 +1662,13 @@ public partial class Views_Uzi : System.Web.UI.Page
             if (DoctorTimeLB5.SelectedValue.Contains(" - "))
             {
                 SubmitBT.Visible = false;
-                delBT.Visible = true;
                 ChangeBT.Visible = true;
-                ConfirmBT.Visible = true;
 
             }
             else
             {
                 SubmitBT.Visible = true;
-                delBT.Visible = false;
                 ChangeBT.Visible = false;
-                ConfirmBT.Visible = false;
             }
             for (int i = 0; i < DoctorTimeLB5.Items.Count; i++)
             {
@@ -2229,72 +2206,6 @@ public partial class Views_Uzi : System.Web.UI.Page
 
     }
 
-    protected void YesDelBT_Click(object sender, EventArgs e)
-    {
-        Uzi_Zapisi editZapis = db.Uzi_Zapisi.SingleOrDefault(x => x.ID == Convert.ToInt32(recordID.Text));
-        editZapis.name_1 = "";
-        editZapis.name_2 = "";
-        editZapis.name_3 = "";
-        editZapis.phone = "";
-        editZapis.age = "";
-        editZapis.sex = "";
-        editZapis.services = "";
-        editZapis.accept = false;
-        editZapis.admin = "";
-        editZapis.comment = "";
-        db.SubmitChanges();
-        var docs = (from d in db.Uzi_Zapisi
-                    where d.city == CityDL.SelectedValue.ToString()
-                    where d.mo == MoDL.SelectedValue.ToString()
-                    where d.date == DateDL.SelectedValue
-                    select d.doctor).Distinct();
-        Uzi_Zapisi editZapis2 = db.Uzi_Zapisi.FirstOrDefault(x => x.name_1.Contains(recordID.Text));
-        if (editZapis2 is null)
-        {
-
-        }
-        else
-        {
-            editZapis2.name_1 = "";
-            db.SubmitChanges();
-        }
-        Uzi_Zapisi editZapis3 = db.Uzi_Zapisi.FirstOrDefault(x => x.name_1.Contains(recordID.Text));
-        if (editZapis3 is null)
-        {
-
-        }
-        else
-        {
-            editZapis3.name_1 = "";
-            db.SubmitChanges();
-        }
-        if (DoctorRB1.Checked)
-        {
-            time1(docs.ToList().ElementAt(0).ToString());
-        }
-        else if (DoctorRB2.Checked)
-        {
-            time2(docs.ToList().ElementAt(1).ToString());
-        }
-        else if (DoctorRB3.Checked)
-        {
-            time3(docs.ToList().ElementAt(2).ToString());
-        }
-        else if (DoctorRB4.Checked)
-        {
-            time4(docs.ToList().ElementAt(3).ToString());
-        }
-        else if (DoctorRB5.Checked)
-        {
-            time5(docs.ToList().ElementAt(4).ToString());
-        }
-        SubmitBT.Visible = true;
-        delBT.Visible = false;
-        ChangeBT.Visible = false;
-        ConfirmBT.Visible = false;
-
-    }
-
     protected void SexDL_SelectedIndexChanged(object sender, EventArgs e)
     {
 
@@ -2359,5 +2270,10 @@ public partial class Views_Uzi : System.Web.UI.Page
         string toSend = "https://mainsms.ru/api/mainsms/message/send?project=suz&sender=INVITRO&message=" + message + "&recipients=" + phone + "&sign=" + sb1.ToString();
         WebRequest req = WebRequest.Create(toSend);
         WebResponse resp = req.GetResponse();
+    }
+
+    protected void ChangeBT_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("/Views/UziReplace.aspx?id=" + recordID.Text);
     }
 }
