@@ -115,4 +115,10 @@
       <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Vnd_Nsk" Member="Vnd_Nsk">
+    <Type Name="Vnd_Nsk">
+      <Column Name="formalname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="shortname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

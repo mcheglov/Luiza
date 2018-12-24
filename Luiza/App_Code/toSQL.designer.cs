@@ -161,6 +161,14 @@ public partial class toSQLDataContext : System.Data.Linq.DataContext
 			return this.GetTable<Uzi_Zapisi>();
 		}
 	}
+	
+	public System.Data.Linq.Table<Vnd_Nsk> Vnd_Nsk
+	{
+		get
+		{
+			return this.GetTable<Vnd_Nsk>();
+		}
+	}
 }
 
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Sperm_Cities")]
@@ -2150,6 +2158,51 @@ public partial class Uzi_Zapisi : INotifyPropertyChanging, INotifyPropertyChange
 		if ((this.PropertyChanged != null))
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Vnd_Nsk")]
+public partial class Vnd_Nsk
+{
+	
+	private string _formalname;
+	
+	private string _shortname;
+	
+	public Vnd_Nsk()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_formalname", DbType="NVarChar(255)")]
+	public string formalname
+	{
+		get
+		{
+			return this._formalname;
+		}
+		set
+		{
+			if ((this._formalname != value))
+			{
+				this._formalname = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_shortname", DbType="NVarChar(255)")]
+	public string shortname
+	{
+		get
+		{
+			return this._shortname;
+		}
+		set
+		{
+			if ((this._shortname != value))
+			{
+				this._shortname = value;
+			}
 		}
 	}
 }
