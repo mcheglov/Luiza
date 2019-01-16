@@ -48,16 +48,16 @@ public partial class Views_Uzi : System.Web.UI.Page
             if (DateDL.Items.Count == 0)
             {
                 DateTime dt1 = DateTime.Now;
-                var days = (from d in db.Uzi_Zapisi
+                var temp = (from d in db.Uzi_Zapisi
                             where d.city == CityDL.SelectedValue.ToString()
                             where d.mo == MoDL.SelectedValue.ToString()
-                            where d.date.Contains(dt1.ToShortDateString().Remove(0, 6))
                             select d.date).Distinct();
+                var days = temp.ToList();
                 DateDL.Items.Clear();
                 DateTime[] dates = new DateTime[days.Count()];
                 for (int i = 0; i < days.Count(); i++)
                 {
-                    dates[i] = DateTime.ParseExact(days.ToList().ElementAt(i).ToString(), "dd.M.yyyy", null);
+                    dates[i] = DateTime.ParseExact(days[i].ToString(), "dd.M.yyyy", null);
                 }
                 dates = dates.OrderByDescending(d => d).ToArray();
                 for (int i = 0; i < days.Count(); i++)
@@ -1695,16 +1695,16 @@ public partial class Views_Uzi : System.Web.UI.Page
             MoDL.Items.Add(mos.ToList().ElementAt(i).mo.ToString());
         }
         DateTime dt1 = DateTime.Now;
-        var days = (from d in db.Uzi_Zapisi
+        var temp = (from d in db.Uzi_Zapisi
                     where d.city == CityDL.SelectedValue.ToString()
                     where d.mo == MoDL.SelectedValue.ToString()
-                    where d.date.Contains(dt1.ToShortDateString().Remove(0, 6))
                     select d.date).Distinct();
+        var days = temp.ToList();
         DateDL.Items.Clear();
         DateTime[] dates = new DateTime[days.Count()];
         for (int i = 0; i < days.Count(); i++)
         {
-            dates[i] = DateTime.ParseExact(days.ToList().ElementAt(i).ToString(), "dd.M.yyyy", null);
+            dates[i] = DateTime.ParseExact(days[i].ToString(), "dd.M.yyyy", null);
         }
         dates = dates.OrderByDescending(d => d).ToArray();
         for (int i = 0; i < days.Count(); i++)
@@ -1717,16 +1717,16 @@ public partial class Views_Uzi : System.Web.UI.Page
     protected void MoDL_SelectedIndexChanged(object sender, EventArgs e)
     {
         DateTime dt1 = DateTime.Now;
-        var days = (from d in db.Uzi_Zapisi
+        var temp = (from d in db.Uzi_Zapisi
                     where d.city == CityDL.SelectedValue.ToString()
                     where d.mo == MoDL.SelectedValue.ToString()
-                    where d.date.Contains(dt1.ToShortDateString().Remove(0, 6))
                     select d.date).Distinct();
+        var days = temp.ToList();
         DateDL.Items.Clear();
         DateTime[] dates = new DateTime[days.Count()];
         for (int i = 0; i < days.Count(); i++)
         {
-            dates[i] = DateTime.ParseExact(days.ToList().ElementAt(i).ToString(), "dd.M.yyyy", null);
+            dates[i] = DateTime.ParseExact(days[i].ToString(), "dd.M.yyyy", null);
         }
         dates = dates.OrderByDescending(d => d).ToArray();
         for (int i = 0; i < days.Count(); i++)
