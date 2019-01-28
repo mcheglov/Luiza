@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/_Layout.master" AutoEventWireup="true" CodeFile="Uzi2.aspx.cs" Inherits="Views_Uzi2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="Server">
-    ЛУИЗА - УЗИ</asp:Content>
+    ЛУИЗА - УЗИ
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="Server">
     <script src="../Scripts/jquery-3.0.0.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
@@ -45,7 +46,7 @@
                 Дата
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
-                <asp:DropDownList ID="DateDL" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small">
+                <asp:DropDownList ID="DateDL" runat="server" Width="100%" AutoPostBack="True" Font-Size="Small" OnSelectedIndexChanged="DateDL_SelectedIndexChanged">
                 </asp:DropDownList>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px;">
@@ -123,7 +124,9 @@
                     <br />
                 </div>
                 <div style="padding: 2px">
-                    <asp:Button ID="SubmitBT" runat="server" CssClass="Btn" Text="ЗАПИСАТЬ" Width="100%" Height="30px" Font-Size="Large" OnClick="SubmitBT_Click" />
+                    <asp:Button ID="SubmitBT" runat="server" CssClass="Btn" Text="ЗАПИСАТЬ" Width="100%" Height="30px" Font-Size="Large" OnClick="SubmitBT_Click" Visible="False" />
+                    <br />
+                    <asp:Button ID="EditBT" runat="server" CssClass="noBtn" Text="РЕДАКТИРОВАТЬ" Width="100%" Height="30px" Font-Size="Large" OnClick="SubmitBT_Click" Visible="False" />
                 </div>
             </div>
             <div style="margin-bottom: 2px; padding-right: 2px; padding-left: 2px; text-align: center;">
@@ -135,28 +138,28 @@
             <div style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; padding: 4px 4px 4px 4px;">
             </div>
             <!--Расписание-->
-            <div style="padding: 4px; position: absolute; right: 0px; left: 0px; top: 0px; bottom: 300px; float: right;  overflow: scroll; overflow-x: hidden;">
-                    <asp:GridView ID="UziGV" runat="server" AutoGenerateColumns="False" BorderColor="#0097A9" BorderWidth="1px" CellPadding="2" Width="100%" DataSourceID="UziDS" OnRowDataBound="UziGV_RowDataBound">
-                        <Columns>
-                            <asp:CommandField SelectText="Выбрать" ShowSelectButton="True" />
-                            <asp:BoundField DataField="time" HeaderText="Время" ReadOnly="True" SortExpression="time" />
-                            <asp:BoundField DataField="name_1" HeaderText="Фамилия" ReadOnly="True" SortExpression="name_1" />
-                            <asp:BoundField DataField="name_2" HeaderText="Имя" ReadOnly="True" SortExpression="name_2" />
-                            <asp:BoundField DataField="name_3" HeaderText="Отчество" ReadOnly="True" SortExpression="name_3" />
-                            <asp:BoundField DataField="age" HeaderText="Возраст" ReadOnly="True" SortExpression="age" />
-                            <asp:BoundField DataField="sex" HeaderText="Пол" ReadOnly="True" SortExpression="sex" />
-                            <asp:BoundField DataField="phone" HeaderText="Телефон" ReadOnly="True" SortExpression="phone" />
-                            <asp:BoundField DataField="services" HeaderText="Услуга" ReadOnly="True" SortExpression="services" />
-                            <asp:BoundField DataField="comment" HeaderText="Комментарий" ReadOnly="True" SortExpression="comment" />
-                            <asp:BoundField DataField="accept" HeaderText="Подтверждение" SortExpression="accept" />
-                            <asp:BoundField DataField="doctor" HeaderText="Доктор" ReadOnly="True" SortExpression="doctor" />
-                            <asp:BoundField DataField="admin" HeaderText="Сотрудник" ReadOnly="True" SortExpression="admin" />
-                            <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
-                        </Columns>
-                        <HeaderStyle ForeColor="#FF6A13" Font-Size="Smaller" />
-                        <RowStyle Font-Size="Smaller" />
-                        <SelectedRowStyle BackColor="#FF6A13" Font-Bold="True" Font-Italic="True" ForeColor="White" />
-                    </asp:GridView>
+            <div style="padding: 4px; position: absolute; right: 0px; left: 0px; top: 0px; bottom: 300px; float: right; overflow: scroll; overflow-x: hidden;">
+                <asp:GridView ID="UziGV" runat="server" AutoGenerateColumns="False" BorderColor="#0097A9" BorderWidth="1px" CellPadding="2" Width="100%" DataSourceID="UziDS" OnRowDataBound="UziGV_RowDataBound" OnSelectedIndexChanged="UziGV_SelectedIndexChanged">
+                    <Columns>
+                        <asp:CommandField SelectText="Выбрать" ShowSelectButton="True" />
+                        <asp:BoundField DataField="time" HeaderText="Время" ReadOnly="True" SortExpression="time" />
+                        <asp:BoundField DataField="name_1" HeaderText="Фамилия" ReadOnly="True" SortExpression="name_1" />
+                        <asp:BoundField DataField="name_2" HeaderText="Имя" ReadOnly="True" SortExpression="name_2" />
+                        <asp:BoundField DataField="name_3" HeaderText="Отчество" ReadOnly="True" SortExpression="name_3" />
+                        <asp:BoundField DataField="age" HeaderText="Возраст" ReadOnly="True" SortExpression="age" />
+                        <asp:BoundField DataField="sex" HeaderText="Пол" ReadOnly="True" SortExpression="sex" />
+                        <asp:BoundField DataField="phone" HeaderText="Телефон" ReadOnly="True" SortExpression="phone" />
+                        <asp:BoundField DataField="services" HeaderText="Услуга" ReadOnly="True" SortExpression="services" />
+                        <asp:BoundField DataField="comment" HeaderText="Комментарий" ReadOnly="True" SortExpression="comment" />
+                        <asp:BoundField DataField="accept" HeaderText="Подтверждение" SortExpression="accept" />
+                        <asp:BoundField DataField="doctor" HeaderText="Доктор" ReadOnly="True" SortExpression="doctor" />
+                        <asp:BoundField DataField="admin" HeaderText="Сотрудник" ReadOnly="True" SortExpression="admin" />
+                        <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
+                    </Columns>
+                    <HeaderStyle ForeColor="#FF6A13" Font-Size="Smaller" />
+                    <RowStyle Font-Size="Smaller" />
+                    <SelectedRowStyle BackColor="#FF6A13" Font-Bold="True" Font-Italic="True" ForeColor="White" />
+                </asp:GridView>
                 <asp:LinqDataSource ID="UziDS" runat="server" ContextTypeName="toSQLDataContext" EntityTypeName="" Select="new (ID, time, age, sex, phone, doctor, services, admin, accept, comment, name_1, name_2, name_3)" TableName="Uzi_Zapisi" Where="city == @city &amp;&amp; mo == @mo &amp;&amp; date == @date &amp;&amp; hidden == @hidden">
                     <WhereParameters>
                         <asp:ControlParameter ControlID="CityDL" Name="city" PropertyName="SelectedValue" Type="String" />
@@ -168,7 +171,91 @@
             </div>
             <!--Расписание-->
             <!--Инфа-->
-            <div style="background-color: #FF00FF; padding: 4px; position: absolute; right: 0px; bottom: 0px; left: 0px; float: left; height: 300px;">
+            <div style="padding: 4px; position: absolute; right: 0px; bottom: 0px; left: 0px; float: left; height: 300px;">
+                <table class="w-100" style="height: 300px; vertical-align: top; text-align: left;">
+                    <tr>
+                        <td style="width: 10%; ">Врач:</td>
+                        <td style="width: 40%; ">Исследования:</td>
+                        <td style="width: 30%; ">Подготовка:</td>
+                        <td style="width: 35%; ">Выбранная услуга:</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" style="width: 10%; ">
+                            <div>
+
+                                        <asp:Label ID="doctor" runat="server" Font-Bold="True" ForeColor="#FF6A13"></asp:Label>
+
+                            </div>
+                            <div>
+
+                                Время:</div>
+                            <div>
+
+                                        <asp:Label ID="time" runat="server" Font-Bold="True" ForeColor="#FF6A13"></asp:Label>
+
+                            </div>
+                        </td>
+                        <td style="width: 40%">
+                            <table class="w-100">
+                                <tr>
+                                    <td style="width: 194px">
+                                        <asp:TextBox ID="searchBox" runat="server" Width="100%"></asp:TextBox>
+                                    </td>
+                                    <td style="width: 50px">
+                                        <asp:Button ID="Button3" runat="server" CssClass="yesBtn" Text="Поиск" Width="100%" OnClick="Button3_Click1" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td rowspan="4" style="width: 30%">
+                            <asp:TextBox ID="prepare" runat="server" Height="100%" TextMode="MultiLine" Width="100%"></asp:TextBox>
+                        </td>
+                        <td rowspan="4" style="width: 35%; text-align: center;">
+                                        <asp:Label ID="test" runat="server" Font-Bold="True" ForeColor="#FF6A13" Font-Size="Larger"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 40%">
+                            <asp:ListBox ID="testList" runat="server" Height="100%" Width="100%" AutoPostBack="True" OnSelectedIndexChanged="testList_SelectedIndexChanged"></asp:ListBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 10%">Длительность:</td>
+                        <td style="width: 40%">
+                            <table class="w-100">
+                                <tr>
+                                    <td style="width: 60px">Цена:</td>
+                                    <td>Ограничения:</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 10%; ">
+                                        <asp:Label ID="dur" runat="server" Font-Bold="True" ForeColor="#FF6A13"></asp:Label>
+                        </td>
+                        <td style="width: 40%;">
+                            <table class="w-100">
+                                <tr>
+                                    <td style="width: 60px">
+                                        <asp:Label ID="price" runat="server" Font-Bold="True" ForeColor="#FF6A13"></asp:Label>
+                                    </td>
+                                    <td>
+                            <asp:Label ID="ogran" runat="server" Font-Bold="True" ForeColor="#FF6A13"></asp:Label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="width: 10%">
+                            <asp:Button ID="addService" runat="server" CssClass="yesBtn" Text="Выбрать услугу" Width="130px" OnClick="addService_Click" />
+                        </td>
+                        <td style="width: 30%">&nbsp;</td>
+                        <td style="width: 35%; ">
+                            &nbsp;</td>
+                    </tr>
+                </table>
             </div>
             <!--Инфа-->
         </div>

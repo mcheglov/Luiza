@@ -734,7 +734,7 @@ public partial class Views_Uzi : System.Web.UI.Page
                             editZapis.mo = MoDL.SelectedValue;
                             editZapis.city = CityDL.SelectedValue;
                             editZapis.comment = CommentTB.Text;
-                            editZapis.services = TestLabel1.Text;
+                            editZapis.services = TestLabel2.Text;
                             editZapis.admin = Request.Cookies["Visitor"]["user"];
                             int err = 0;
                             var duration = (from o in db.Uzi_Doctor
