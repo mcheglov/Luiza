@@ -51,6 +51,7 @@ public partial class Views_Uzi : System.Web.UI.Page
                 var temp = (from d in db.Uzi_Zapisi
                             where d.city == CityDL.SelectedValue.ToString()
                             where d.mo == MoDL.SelectedValue.ToString()
+                            where d.date.Contains("04.2019")
                             select d.date).Distinct();
                 var days = temp.ToList();
                 DateDL.Items.Clear();
@@ -1698,6 +1699,7 @@ public partial class Views_Uzi : System.Web.UI.Page
         var temp = (from d in db.Uzi_Zapisi
                     where d.city == CityDL.SelectedValue.ToString()
                     where d.mo == MoDL.SelectedValue.ToString()
+                    where d.date.Contains("04.2019")
                     select d.date).Distinct();
         var days = temp.ToList();
         DateDL.Items.Clear();
@@ -1720,6 +1722,7 @@ public partial class Views_Uzi : System.Web.UI.Page
         var temp = (from d in db.Uzi_Zapisi
                     where d.city == CityDL.SelectedValue.ToString()
                     where d.mo == MoDL.SelectedValue.ToString()
+                    where d.date.Contains("04.2019")
                     select d.date).Distinct();
         var days = temp.ToList();
         DateDL.Items.Clear();
