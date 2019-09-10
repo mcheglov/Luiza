@@ -146,14 +146,6 @@ public partial class toSQLDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<Uzi_Price> Uzi_Price
-	{
-		get
-		{
-			return this.GetTable<Uzi_Price>();
-		}
-	}
-	
 	public System.Data.Linq.Table<Uzi_Zapisi> Uzi_Zapisi
 	{
 		get
@@ -167,6 +159,14 @@ public partial class toSQLDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<Vnd_Nsk>();
+		}
+	}
+	
+	public System.Data.Linq.Table<Uzi_Price> Uzi_Price
+	{
+		get
+		{
+			return this.GetTable<Uzi_Price>();
 		}
 	}
 }
@@ -1527,195 +1527,6 @@ public partial class Uzi_Doctor : INotifyPropertyChanging, INotifyPropertyChange
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Uzi_Price")]
-public partial class Uzi_Price
-{
-	
-	private int _id;
-	
-	private string _test;
-	
-	private string _description;
-	
-	private string _nsk_price;
-	
-	private string _krs_price;
-	
-	private string _tomsk_price;
-	
-	private string _omsk_price;
-	
-	private string _irk_price;
-	
-	private string _common_prep;
-	
-	private string _tomsk_prep;
-	
-	public Uzi_Price()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-	public int id
-	{
-		get
-		{
-			return this._id;
-		}
-		set
-		{
-			if ((this._id != value))
-			{
-				this._id = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_test", DbType="NVarChar(MAX)")]
-	public string test
-	{
-		get
-		{
-			return this._test;
-		}
-		set
-		{
-			if ((this._test != value))
-			{
-				this._test = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description", DbType="NVarChar(MAX)")]
-	public string description
-	{
-		get
-		{
-			return this._description;
-		}
-		set
-		{
-			if ((this._description != value))
-			{
-				this._description = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nsk_price", DbType="NVarChar(MAX)")]
-	public string nsk_price
-	{
-		get
-		{
-			return this._nsk_price;
-		}
-		set
-		{
-			if ((this._nsk_price != value))
-			{
-				this._nsk_price = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_krs_price", DbType="NVarChar(MAX)")]
-	public string krs_price
-	{
-		get
-		{
-			return this._krs_price;
-		}
-		set
-		{
-			if ((this._krs_price != value))
-			{
-				this._krs_price = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tomsk_price", DbType="NVarChar(MAX)")]
-	public string tomsk_price
-	{
-		get
-		{
-			return this._tomsk_price;
-		}
-		set
-		{
-			if ((this._tomsk_price != value))
-			{
-				this._tomsk_price = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_omsk_price", DbType="NVarChar(MAX)")]
-	public string omsk_price
-	{
-		get
-		{
-			return this._omsk_price;
-		}
-		set
-		{
-			if ((this._omsk_price != value))
-			{
-				this._omsk_price = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_irk_price", DbType="NVarChar(MAX)")]
-	public string irk_price
-	{
-		get
-		{
-			return this._irk_price;
-		}
-		set
-		{
-			if ((this._irk_price != value))
-			{
-				this._irk_price = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_common_prep", DbType="NVarChar(MAX)")]
-	public string common_prep
-	{
-		get
-		{
-			return this._common_prep;
-		}
-		set
-		{
-			if ((this._common_prep != value))
-			{
-				this._common_prep = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tomsk_prep", DbType="NVarChar(MAX)")]
-	public string tomsk_prep
-	{
-		get
-		{
-			return this._tomsk_prep;
-		}
-		set
-		{
-			if ((this._tomsk_prep != value))
-			{
-				this._tomsk_prep = value;
-			}
-		}
-	}
-}
-
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Uzi_Zapisi")]
 public partial class Uzi_Zapisi : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -2202,6 +2013,213 @@ public partial class Vnd_Nsk
 			if ((this._shortname != value))
 			{
 				this._shortname = value;
+			}
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Uzi_Price")]
+public partial class Uzi_Price
+{
+	
+	private int _id;
+	
+	private string _test;
+	
+	private string _description;
+	
+	private string _nsk_price;
+	
+	private string _krs_price;
+	
+	private string _tomsk_price;
+	
+	private string _omsk_price;
+	
+	private string _irk_price;
+	
+	private string _common_prep;
+	
+	private string _tomsk_prep;
+	
+	private string _vld_price;
+	
+	public Uzi_Price()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+	public int id
+	{
+		get
+		{
+			return this._id;
+		}
+		set
+		{
+			if ((this._id != value))
+			{
+				this._id = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_test", DbType="NVarChar(MAX)")]
+	public string test
+	{
+		get
+		{
+			return this._test;
+		}
+		set
+		{
+			if ((this._test != value))
+			{
+				this._test = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description", DbType="NVarChar(MAX)")]
+	public string description
+	{
+		get
+		{
+			return this._description;
+		}
+		set
+		{
+			if ((this._description != value))
+			{
+				this._description = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nsk_price", DbType="NVarChar(MAX)")]
+	public string nsk_price
+	{
+		get
+		{
+			return this._nsk_price;
+		}
+		set
+		{
+			if ((this._nsk_price != value))
+			{
+				this._nsk_price = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_krs_price", DbType="NVarChar(MAX)")]
+	public string krs_price
+	{
+		get
+		{
+			return this._krs_price;
+		}
+		set
+		{
+			if ((this._krs_price != value))
+			{
+				this._krs_price = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tomsk_price", DbType="NVarChar(MAX)")]
+	public string tomsk_price
+	{
+		get
+		{
+			return this._tomsk_price;
+		}
+		set
+		{
+			if ((this._tomsk_price != value))
+			{
+				this._tomsk_price = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_omsk_price", DbType="NVarChar(MAX)")]
+	public string omsk_price
+	{
+		get
+		{
+			return this._omsk_price;
+		}
+		set
+		{
+			if ((this._omsk_price != value))
+			{
+				this._omsk_price = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_irk_price", DbType="NVarChar(MAX)")]
+	public string irk_price
+	{
+		get
+		{
+			return this._irk_price;
+		}
+		set
+		{
+			if ((this._irk_price != value))
+			{
+				this._irk_price = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_common_prep", DbType="NVarChar(MAX)")]
+	public string common_prep
+	{
+		get
+		{
+			return this._common_prep;
+		}
+		set
+		{
+			if ((this._common_prep != value))
+			{
+				this._common_prep = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tomsk_prep", DbType="NVarChar(MAX)")]
+	public string tomsk_prep
+	{
+		get
+		{
+			return this._tomsk_prep;
+		}
+		set
+		{
+			if ((this._tomsk_prep != value))
+			{
+				this._tomsk_prep = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_vld_price", DbType="NVarChar(MAX)")]
+	public string vld_price
+	{
+		get
+		{
+			return this._vld_price;
+		}
+		set
+		{
+			if ((this._vld_price != value))
+			{
+				this._vld_price = value;
 			}
 		}
 	}

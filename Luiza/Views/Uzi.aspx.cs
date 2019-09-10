@@ -1255,12 +1255,6 @@ public partial class Views_Uzi : System.Web.UI.Page
             DoctorRB4.BackColor = System.Drawing.Color.White;
             DoctorRB5.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FF6A13");
             DoctorRB5.BackColor = System.Drawing.Color.White;
-            var info = (from i in db.Uzi_Doctor
-                        where i.DOCTOR == DoctorRB1.Text
-                        where i.CITY == CityDL.SelectedValue
-                        where i.MO == MoDL.SelectedValue
-                        select i.RESTRICTION);
-            restrictionLabel.Text = info.ToList().ElementAt(0).ToString();
 
             block1hide.Visible = false;
             block2hide.Visible = true;
@@ -1304,12 +1298,6 @@ public partial class Views_Uzi : System.Web.UI.Page
             DoctorRB4.BackColor = System.Drawing.Color.White;
             DoctorRB5.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FF6A13");
             DoctorRB5.BackColor = System.Drawing.Color.White;
-            var info = (from i in db.Uzi_Doctor
-                        where i.DOCTOR == DoctorRB2.Text
-                        where i.CITY == CityDL.SelectedValue
-                        where i.MO == MoDL.SelectedValue
-                        select i.RESTRICTION);
-            restrictionLabel.Text = info.ToList().ElementAt(0).ToString();
             block1hide.Visible = true;
             block2hide.Visible = false;
             block3hide.Visible = true;
@@ -1351,12 +1339,6 @@ public partial class Views_Uzi : System.Web.UI.Page
             DoctorRB4.BackColor = System.Drawing.Color.White;
             DoctorRB5.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FF6A13");
             DoctorRB5.BackColor = System.Drawing.Color.White;
-            var info = (from i in db.Uzi_Doctor
-                        where i.DOCTOR == DoctorRB3.Text
-                        where i.CITY == CityDL.SelectedValue
-                        where i.MO == MoDL.SelectedValue
-                        select i.RESTRICTION);
-            restrictionLabel.Text = info.ToList().ElementAt(0).ToString();
             block1hide.Visible = true;
             block2hide.Visible = true;
             block3hide.Visible = false;
@@ -1397,12 +1379,6 @@ public partial class Views_Uzi : System.Web.UI.Page
             DoctorRB2.BackColor = System.Drawing.Color.White;
             DoctorRB5.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FF6A13");
             DoctorRB5.BackColor = System.Drawing.Color.White;
-            var info = (from i in db.Uzi_Doctor
-                        where i.DOCTOR == DoctorRB4.Text
-                        where i.CITY == CityDL.SelectedValue
-                        where i.MO == MoDL.SelectedValue
-                        select i.RESTRICTION);
-            restrictionLabel.Text = info.ToList().ElementAt(0).ToString();
             block1hide.Visible = true;
             block2hide.Visible = true;
             block3hide.Visible = true;
@@ -1443,12 +1419,6 @@ public partial class Views_Uzi : System.Web.UI.Page
             DoctorRB4.BackColor = System.Drawing.Color.White;
             DoctorRB2.ForeColor = System.Drawing.ColorTranslator.FromHtml("#FF6A13");
             DoctorRB2.BackColor = System.Drawing.Color.White;
-            var info = (from i in db.Uzi_Doctor
-                        where i.DOCTOR == DoctorRB5.Text
-                        where i.CITY == CityDL.SelectedValue
-                        where i.MO == MoDL.SelectedValue
-                        select i.RESTRICTION);
-            restrictionLabel.Text = info.ToList().ElementAt(0).ToString();
             block1hide.Visible = true;
             block2hide.Visible = true;
             block3hide.Visible = true;
@@ -1804,6 +1774,18 @@ public partial class Views_Uzi : System.Web.UI.Page
                 durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
                 currentTest.Text = TestLB1.SelectedItem.Text;
             }
+            else if (CityDL.Text == "Владивосток")
+            {
+                priceLabel.Text = testprice.ToList().ElementAt(0).vld_price.ToString();
+                PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                var docDur = (from o in db.Uzi_Doctor
+                                where o.DOCTOR == DoctorRB1.Text
+                                where o.TEST == testCode
+                                where o.MO == MoDL.SelectedValue.ToString()
+                                select o);
+                durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                currentTest.Text = TestLB1.SelectedItem.Text;
+            }
             else if (CityDL.Text == "Томск")
             {
                 priceLabel.Text = testprice.ToList().ElementAt(0).tomsk_price.ToString();
@@ -1840,7 +1822,13 @@ public partial class Views_Uzi : System.Web.UI.Page
                 durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
                 currentTest.Text = TestLB1.SelectedItem.Text;
             }
-        }
+            var info = (from i in db.Uzi_Doctor
+                        where i.DOCTOR == DoctorRB1.Text
+                        where i.CITY == CityDL.SelectedValue
+                        where i.MO == MoDL.SelectedValue
+                        select i.RESTRICTION);
+            restrictionLabel.Text = info.ToList().ElementAt(0).ToString();
+            }
         }
 
     }
@@ -1881,6 +1869,18 @@ public partial class Views_Uzi : System.Web.UI.Page
                     currentTest.Text = TestLB2.SelectedItem.Text;
 
                 }
+                else if (CityDL.Text == "Владивосток")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).vld_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB2.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB2.SelectedItem.Text;
+                }
                 else if (CityDL.Text == "Томск")
                 {
                     priceLabel.Text = testprice.ToList().ElementAt(0).tomsk_price.ToString();
@@ -1920,6 +1920,12 @@ public partial class Views_Uzi : System.Web.UI.Page
                     currentTest.Text = TestLB2.SelectedItem.Text;
 
                 }
+                var info = (from i in db.Uzi_Doctor
+                            where i.DOCTOR == DoctorRB2.Text
+                            where i.CITY == CityDL.SelectedValue
+                            where i.MO == MoDL.SelectedValue
+                            select i.RESTRICTION);
+                restrictionLabel.Text = info.ToList().ElementAt(0).ToString();
             }
         }
     }
@@ -1961,7 +1967,19 @@ public partial class Views_Uzi : System.Web.UI.Page
                 currentTest.Text = TestLB3.SelectedItem.Text;
 
             }
-            else if (CityDL.Text == "Томск")
+                else if (CityDL.Text == "Владивосток")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).vld_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB3.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB3.SelectedItem.Text;
+                }
+                else if (CityDL.Text == "Томск")
             {
                 priceLabel.Text = testprice.ToList().ElementAt(0).tomsk_price.ToString();
                 PrepTB.Text = testprice.ToList().ElementAt(0).tomsk_prep.ToString();
@@ -2000,7 +2018,13 @@ public partial class Views_Uzi : System.Web.UI.Page
                 currentTest.Text = TestLB3.SelectedItem.Text;
 
             }
-        }
+            var info = (from i in db.Uzi_Doctor
+                        where i.DOCTOR == DoctorRB3.Text
+                        where i.CITY == CityDL.SelectedValue
+                        where i.MO == MoDL.SelectedValue
+                        select i.RESTRICTION);
+            restrictionLabel.Text = info.ToList().ElementAt(0).ToString();
+            }
         }
     }
 
@@ -2031,6 +2055,18 @@ public partial class Views_Uzi : System.Web.UI.Page
                 else if (CityDL.Text == "Красноярск")
                 {
                     priceLabel.Text = testprice.ToList().ElementAt(0).krs_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB4.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB4.SelectedItem.Text;
+                }
+                else if (CityDL.Text == "Владивосток")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).vld_price.ToString();
                     PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
                     var docDur = (from o in db.Uzi_Doctor
                                   where o.DOCTOR == DoctorRB4.Text
@@ -2076,6 +2112,12 @@ public partial class Views_Uzi : System.Web.UI.Page
                     durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
                     currentTest.Text = TestLB4.SelectedItem.Text;
                 }
+                var info = (from i in db.Uzi_Doctor
+                            where i.DOCTOR == DoctorRB4.Text
+                            where i.CITY == CityDL.SelectedValue
+                            where i.MO == MoDL.SelectedValue
+                            select i.RESTRICTION);
+                restrictionLabel.Text = info.ToList().ElementAt(0).ToString();
             }
         }
     }
@@ -2116,6 +2158,18 @@ public partial class Views_Uzi : System.Web.UI.Page
                     currentTest.Text = TestLB5.SelectedItem.Text;
 
                 }
+                else if (CityDL.Text == "Владивосток")
+                {
+                    priceLabel.Text = testprice.ToList().ElementAt(0).vld_price.ToString();
+                    PrepTB.Text = testprice.ToList().ElementAt(0).common_prep.ToString();
+                    var docDur = (from o in db.Uzi_Doctor
+                                  where o.DOCTOR == DoctorRB5.Text
+                                  where o.TEST == testCode
+                                  where o.MO == MoDL.SelectedValue.ToString()
+                                  select o);
+                    durationLabel.Text = docDur.ToList().ElementAt(0).DURATION.ToString() + " мин.";
+                    currentTest.Text = TestLB5.SelectedItem.Text;
+                }
                 else if (CityDL.Text == "Томск")
                 {
                     priceLabel.Text = testprice.ToList().ElementAt(0).tomsk_price.ToString();
@@ -2155,6 +2209,12 @@ public partial class Views_Uzi : System.Web.UI.Page
                     currentTest.Text = TestLB5.SelectedItem.Text;
 
                 }
+                var info = (from i in db.Uzi_Doctor
+                            where i.DOCTOR == DoctorRB5.Text
+                            where i.CITY == CityDL.SelectedValue
+                            where i.MO == MoDL.SelectedValue
+                            select i.RESTRICTION);
+                restrictionLabel.Text = info.ToList().ElementAt(0).ToString();
             }
         }
     }

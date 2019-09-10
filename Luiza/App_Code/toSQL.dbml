@@ -80,20 +80,6 @@
       <Column Name="DURATION_OMS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Uzi_Price" Member="Uzi_Price">
-    <Type Name="Uzi_Price">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="test" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="nsk_price" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="krs_price" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="tomsk_price" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="omsk_price" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="irk_price" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="common_prep" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="tomsk_prep" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Uzi_Zapisi" Member="Uzi_Zapisi">
     <Type Name="Uzi_Zapisi">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -119,6 +105,21 @@
     <Type Name="Vnd_Nsk">
       <Column Name="formalname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="shortname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Uzi_Price" Member="Uzi_Price">
+    <Type Name="Uzi_Price">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="test" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="nsk_price" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="krs_price" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tomsk_price" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="omsk_price" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="irk_price" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="common_prep" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tomsk_prep" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="vld_price" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

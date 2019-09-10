@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 12.25" name="toSQL">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 12.375" name="toSQL">
   <DataContextMoniker Name="/toSQLDataContext" />
   <nestedChildShapes>
     <classShape Id="8862fcd7-69a5-4d9f-99d7-d7b2cd0808f8" absoluteBounds="2.625, 0.5, 2, 1.5785953776041666">
@@ -50,22 +50,22 @@
         <elementListCompartment Id="0d9a7f46-a66b-496c-a5cb-4af540d2e1e4" absoluteBounds="4.765, 2.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b8f3242a-0e62-4c55-a642-dd1673dbef1b" absoluteBounds="4.75, 5, 2, 2.7324039713541666">
-      <DataClassMoniker Name="/toSQLDataContext/Uzi_Price" />
-      <nestedChildShapes>
-        <elementListCompartment Id="3ee8a853-33a2-43f2-849c-322ca4b8385f" absoluteBounds="4.765, 5.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="3bdad04a-913c-401b-a264-8c463f9091db" absoluteBounds="4.75, 7.875, 2, 4.0785139973958326">
+    <classShape Id="3bdad04a-913c-401b-a264-8c463f9091db" absoluteBounds="4.75, 8, 2, 4.0785139973958326">
       <DataClassMoniker Name="/toSQLDataContext/Uzi_Zapisi" />
       <nestedChildShapes>
-        <elementListCompartment Id="bfd52e9d-29b2-4af8-ab83-9c6e5a5fc0e9" absoluteBounds="4.7650000000000006, 8.335, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="bfd52e9d-29b2-4af8-ab83-9c6e5a5fc0e9" absoluteBounds="4.7650000000000006, 8.46, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="043ead4f-a0c3-4871-9718-dd79013059da" absoluteBounds="6.875, 0.5, 2, 1.1939925130208333">
       <DataClassMoniker Name="/toSQLDataContext/Vnd_Nsk" />
       <nestedChildShapes>
         <elementListCompartment Id="dd75643d-50f0-454f-92a4-5029a9185462" absoluteBounds="6.8900000000000006, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a206c0e9-bea3-48c6-83ea-dddd63fca60b" absoluteBounds="4.75, 5, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/toSQLDataContext/Uzi_Price" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ad5464e5-7317-4313-acc7-4c4ee6090b64" absoluteBounds="4.765, 5.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
