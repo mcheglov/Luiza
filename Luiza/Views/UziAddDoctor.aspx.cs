@@ -122,6 +122,23 @@ public partial class Views_UziAddDoctor : System.Web.UI.Page
                     TestDL.Items.Add(orderedtests[i]);
                 }
             }
+            else if (CityDL.Text == "Владивосток")
+            {
+                var tests = (from o in db.Uzi_Price
+                             where o.vld_price.Length > 0
+                             select o);
+                var orderedtests = new List<string>();
+                for (int i = 0; i < tests.Count(); i++)
+                {
+                    orderedtests.Add(tests.ToList().ElementAt(i).test.ToString() + "-" + tests.ToList().ElementAt(i).description.ToString());
+                }
+                orderedtests = orderedtests.OrderByDescending(d => d).ToList();
+                orderedtests.Reverse();
+                for (int i = 0; i < orderedtests.Count; i++)
+                {
+                    TestDL.Items.Add(orderedtests[i]);
+                }
+            }
             DurDL.Items.Clear();
             var duration = (from o in db.Uzi_Cities
                             where o.city == CityDL.SelectedItem.Text
